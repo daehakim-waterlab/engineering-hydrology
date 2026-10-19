@@ -57,7 +57,7 @@ $$
 
 This identity is how loss parameters are calibrated: the direct runoff volume is measured at a gauge (after baseflow separation, Chapter 6), divided by the catchment area, and the loss parameter is adjusted until the excess rainfall has the same depth.
 
-A useful way to think about losses is in two parts (Figure 7.1). At the start of a storm, interception, depression storage and the high initial infiltration capacity absorb all the rain; this is the **initial loss**. Afterwards, the soil keeps absorbing water at a lower rate, the **continuing loss**. All the methods in this chapter are different ways of describing these two parts.
+A useful way to think about losses is in two parts (Figure 7.1). At the start of a storm, interception, depression storage and the high initial infiltration capacity absorb all the rain; this is the **initial loss**. Afterward, the soil keeps absorbing water at a lower rate, the **continuing loss**. All the methods in this chapter are different ways of describing these two parts.
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -99,10 +99,10 @@ $$
 
 where $C$ is the **runoff coefficient**. It is the event runoff ratio of Chapter 6 used as a parameter. It is appropriate for small, highly impervious catchments, where losses are small and nearly proportional to rainfall, and it is the loss model of the rational method (Chapter 8). Typical values range from 0.7–0.95 for roofs and pavement, through 0.3–0.6 for suburban areas, to 0.05–0.35 for lawns, parks and forests, increasing with slope and with soil fineness. A catchment with several land uses has a **composite** coefficient equal to the area-weighted average:
 
-\begin{equation}
+\begin{equation*}
 C = \frac{\sum_j C_j A_j}{\sum_j A_j} .
 \tag{7.1}
-\end{equation}
+\end{equation*}
 
 The weakness of the runoff coefficient is that real losses are not proportional to rainfall: a small storm on dry soil may produce almost no runoff, while a large storm on wet soil produces much more than the same fraction. For larger and less impervious catchments, $C$ must therefore be chosen for the storm size and the antecedent wetness of interest.
 
@@ -110,10 +110,10 @@ The weakness of the runoff coefficient is that real losses are not proportional 
 
 The **φ-index** is the constant loss rate (mm h⁻¹) that, subtracted from the rainfall hyetograph, leaves an excess rainfall equal to the observed direct runoff:
 
-\begin{equation}
+\begin{equation*}
 P_e = \sum_k \max\bigl(i_k - \phi,\ 0\bigr)\,\Delta t .
 \tag{7.2}
-\end{equation}
+\end{equation*}
 
 Intervals with rainfall intensity below $\phi$ contribute no excess, so $\phi$ cannot be computed in one step: assume which intervals produce excess, solve for $\phi$, and check that the assumption holds. A simple and safe way is to note that the right side of Equation (7.2) decreases steadily as $\phi$ increases, so the root can be found by bisection (Example 7.2).
 
@@ -131,10 +131,10 @@ $$
 
 where $F = P - I_a - P_e$ is the water retained after runoff begins and $S_{\max}$ is the **potential maximum retention**, the most water the catchment could retain once runoff starts. Substituting $F$ and solving for $P_e$:
 
-\begin{equation}
+\begin{equation*}
 P_e = \begin{cases}\dfrac{(P - I_a)^2}{P - I_a + S_{\max}} & P > I_a \\[8pt] 0 & P \le I_a\end{cases}
 \tag{7.3}
-\end{equation}
+\end{equation*}
 
 From data on small catchments the SCS took $I_a = 0.2\,S_{\max}$, so that
 
@@ -148,10 +148,10 @@ As $P$ grows, $P_e/P \to 1$ and the retention approaches $S_{\max}$: the catchme
 
 To make $S_{\max}$ easier to tabulate, it is expressed through a dimensionless **curve number** CN between 0 and 100. The original definition in inches is $S_{\max} = 1000/\text{CN} - 10$. In millimeters (1 in = 25.4 mm):
 
-\begin{equation}
+\begin{equation*}
 S_{\max} = \frac{25400}{\text{CN}} - 254 \qquad (\text{mm}).
 \tag{7.4}
-\end{equation}
+\end{equation*}
 
 CN = 100 means no retention (an impervious or water surface), and lower values mean more retention: CN = 50 gives $S_{\max}$ = 254 mm. The code below checks that the SI form gives exactly the same runoff as the original equation in inches.
 
@@ -190,7 +190,7 @@ ax.set_xlim(0, 335); ax.set_ylim(0, 300)
 plt.show()
 ```
 
-*Figure 7.2. Direct runoff from the curve number equation with $I_a = 0.2\,S_{\max}$. No runoff occurs until the rain exceeds the initial abstraction; afterwards each curve bends towards a slope of one.*
+*Figure 7.2. Direct runoff from the curve number equation with $I_a = 0.2\,S_{\max}$. No runoff occurs until the rain exceeds the initial abstraction; afterward each curve bends toward a slope of one.*
 
 ### Choosing the curve number
 
@@ -204,12 +204,12 @@ Tables of CN for combinations of soil group and land cover, for average antecede
 
 **Antecedent moisture.** In the traditional procedure, the 5-day rainfall before the storm determines the antecedent moisture class. Converted from the original thresholds in inches, AMC I (dry) applies when the 5-day total is below 13 mm in the dormant season or 36 mm in the growing season, and AMC III (wet) when it exceeds 28 mm or 53 mm respectively; AMC II lies between. Curve numbers for AMC II are converted to the other classes with the widely used approximations
 
-\begin{equation}
+\begin{equation*}
 \text{CN}_{\text{I}} = \frac{4.2\,\text{CN}_{\text{II}}}{10 - 0.058\,\text{CN}_{\text{II}}},
 \qquad
 \text{CN}_{\text{III}} = \frac{23\,\text{CN}_{\text{II}}}{10 + 0.13\,\text{CN}_{\text{II}}} .
 \tag{7.5}
-\end{equation}
+\end{equation*}
 
 ```{code-cell} python
 thresholds_in = {"dormant": (0.5, 1.1), "growing": (1.4, 2.1)}     # AMC I upper / AMC III lower, inches
@@ -299,7 +299,7 @@ glue("m_maxC", float((C_fit * P).max() / dt), display=False)
 glue("m_maxGA", float(methods[3][1].max() / dt), display=False)
 ```
 
-*Figure 7.3. Four loss methods applied to the storm of Figure 7.1, each adjusted so that the total excess is 40 mm. The light bars are rainfall, the dark bars excess rainfall, and the dashed line the centroid of the excess. The runoff coefficient spreads excess over the whole storm (its maximum is {glue:text}`m_maxC:.1f` mm h⁻¹), whereas the φ-index and Green–Ampt concentrate it in the most intense half-hours ({glue:text}`m_maxGA:.1f` mm h⁻¹ for Green–Ampt). The curve number method delays the excess towards the end of the storm.*
+*Figure 7.3. Four loss methods applied to the storm of Figure 7.1, each adjusted so that the total excess is 40 mm. The light bars are rainfall, the dark bars excess rainfall, and the dashed line the centroid of the excess. The runoff coefficient spreads excess over the whole storm (its maximum is {glue:text}`m_maxC:.1f` mm h⁻¹), whereas the φ-index and Green–Ampt concentrate it in the most intense half-hours ({glue:text}`m_maxGA:.1f` mm h⁻¹ for Green–Ampt). The curve number method delays the excess toward the end of the storm.*
 
 The same 40 mm of runoff, routed through the same catchment (Chapter 9), would produce different peaks because the excess has different intensities and timing. For design, the loss method is as important a choice as the unit hydrograph, a point that Chapter 12 examines quantitatively.
 

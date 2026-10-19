@@ -45,7 +45,7 @@ plt.rcParams.update({
 
 A catchment of 100 km² contains millions of hillslope elements, each with its own soil depth, slope, vegetation and distance to the stream. A complete physical description is out of reach, and the data to support one never exist. Yet the methods of this book, which describe the whole catchment with one or two parameters, work surprisingly well. This chapter asks why, and shows what simple models can tell us about floods in a changing climate.
 
-Part of the answer is **averaging**. The outflow at the outlet is the sum of contributions from many parts of the catchment. When many independent, differently shaped responses are added together, the details of each cancel out and the sum takes a smooth, regular shape, in the same way that the sum of many random numbers tends towards a normal distribution. Figure 13.1 demonstrates this: 2000 hillslopes, each a linear reservoir with its own storage constant and its own travel time to the outlet, add up to a smooth catchment response that a two-parameter Nash cascade (Chapter 9) describes closely.
+Part of the answer is **averaging**. The outflow at the outlet is the sum of contributions from many parts of the catchment. When many independent, differently shaped responses are added together, the details of each cancel out and the sum takes a smooth, regular shape, in the same way that the sum of many random numbers tends toward a normal distribution. Figure 13.1 demonstrates this: 2000 hillslopes, each a linear reservoir with its own storage constant and its own travel time to the outlet, add up to a smooth catchment response that a two-parameter Nash cascade (Chapter 9) describes closely.
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -78,10 +78,10 @@ glue("nash_err", float(np.abs(fit - catch).max() / catch.max() * 100), display=F
 
 A second part of the answer is that catchments are not random collections of parts. Over long periods, water, soil, vegetation and the drainage network shape one another, and the result has **regular statistical structure**. Robert Horton (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)) found that the numbers, lengths and areas of streams of successive orders form geometric series, the **Horton laws** of drainage composition. Such regularities are **power laws**: relations of the form
 
-\begin{equation}
+\begin{equation*}
 y = a\,x^{b},
 \tag{13.1}
-\end{equation}
+\end{equation*}
 
 which become straight lines on log–log plots, $\ln y = \ln a + b \ln x$. A power law has no characteristic scale: multiplying $x$ by any factor multiplies $y$ by the same factor to the power $b$, whatever the starting size. Hack (1957) found that main-stream length grows with catchment area as $L \approx 1.4\,A^{0.6}$ (miles and square miles), or in SI
 
@@ -97,26 +97,26 @@ an exponent above 0.5 that means larger catchments are relatively more elongated
 
 Suppose that the discharge of a catchment depends only on how much water it stores, $Q = f(S)$, as for the reservoirs of Chapters 9 and 10 but without assuming linearity. The water balance of Chapter 1 is $dS/dt = P - E - Q$. Differentiating $Q = f(S)$ with respect to time,
 
-\begin{equation}
+\begin{equation*}
 \frac{dQ}{dt} = \frac{dQ}{dS}\,\frac{dS}{dt} = g(Q)\,\bigl(P - E - Q\bigr),
 \tag{13.2}
-\end{equation}
+\end{equation*}
 
 where $g(Q) = dQ/dS$ is the **sensitivity function**: how strongly discharge responds to a change in storage. Kirchner (2009) pointed out that $g(Q)$ can be measured directly from the streamflow record. During periods when $P$ and $E$ are both negligible (rainless nights, when transpiration stops), Equation (13.2) reduces to
 
-\begin{equation}
+\begin{equation*}
 g(Q) = \frac{-\,dQ/dt}{Q}\bigg|_{P \approx 0,\ E \approx 0}.
 \tag{13.3}
-\end{equation}
+\end{equation*}
 
 This is the recession analysis of Chapter 6 in a new role. If the recession plot follows a power law, $-dQ/dt = a\,Q^{b}$, then $g(Q) = a\,Q^{b-1}$: a straight line on a log–log plot. For a linear reservoir $b = 1$ and $g = 1/k$ is constant. For $b > 1$ the catchment responds faster when it is wet, which is typical.
 
 Once $g(Q)$ is known, Equation (13.2) is a complete rainfall–runoff model with no further calibration: given $P$ and $E$, it predicts $Q$. It can also be run **backward**: given $Q$, it estimates the catchment-average $P - E$,
 
-\begin{equation}
+\begin{equation*}
 P - E = \frac{dQ/dt}{g(Q)} + Q ,
 \tag{13.4}
-\end{equation}
+\end{equation*}
 
 which Kirchner called "doing hydrology backward". The storage–discharge relation itself follows by integrating $dS = dQ/g(Q)$.
 
@@ -160,7 +160,7 @@ hod, dh = hours % 24, (hours // 24) % 365
 Ep = np.clip(np.sin(np.pi * (hod - 6) / 12), 0, None) * (0.33 + 0.25 * np.sin(2 * np.pi * (dh - 100) / 365))
 
 def catchment_model(P, alpha=5e-6, S0=40.0, S_crit=40.0):
-    """'True' catchment: storage S (mm), ET limited when dry, discharge Q = alpha S³ (mm/h)."""
+    """'True' catchment: storage S (mm), evapotranspiration limited when dry, discharge Q = alpha S³ (mm/h)."""
     S = S0; Q = np.empty(len(P)); E = np.empty(len(P))
     for t in range(len(P)):
         S += P[t]
@@ -261,10 +261,10 @@ Flood risk is often assessed with daily data, because long daily records and dai
 
 The relation between the two is not a constant ratio. Because a wet catchment responds faster ($g(Q)$ increases with $Q$ when $b > 1$), large floods are sharper than small ones: more of their volume passes in a few hours, and the hourly peak grows **faster** than the daily mean. Across events the relation is close to a power law,
 
-\begin{equation}
+\begin{equation*}
 Q_{\text{hourly peak}} \approx \alpha\, Q_{\text{daily peak}}^{\,\beta}, \qquad \beta > 1 .
 \tag{13.5}
-\end{equation}
+\end{equation*}
 
 Kim et al. (2018) examined this nonlinearity in a bottom-up assessment of flood risk for a mesoscale catchment. They disaggregated daily rainfall into hours with a multiplicative random cascade, as in Section 13.2, and simulated hourly flows with a simple first-order catchment model of the kind described above. They found that a daily flow indicator could considerably **underestimate** the impact of climate change on flood risk, because the nonlinearity between daily and hourly peaks amplifies the effect of increases in the mean and variability of daily precipitation. Figure 13.4 shows the relation for the synthetic catchment of this chapter.
 

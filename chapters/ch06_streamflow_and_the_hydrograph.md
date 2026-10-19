@@ -47,7 +47,7 @@ Of the rain that reaches the ground during a storm, part is stored in surface de
 
 **Infiltration-excess overland flow.** When rainfall intensity exceeds the infiltration capacity of the soil (Chapter 5), water ponds and flows over the surface. Robert Horton made this mechanism the center of his theory of runoff, and it is often called **Hortonian overland flow**. It dominates where infiltration capacity is low: paved and compacted urban surfaces, crusted or bare soils, and semi-arid regions with intense convective storms. Because it depends on intensity, short bursts of heavy rain matter more than the storm total.
 
-**Saturation-excess overland flow.** In humid regions with permeable soils and vegetation, measured infiltration capacities are often higher than almost any rainfall intensity, yet streams still rise quickly. Field studies in the 1960s and 1970s showed why. Near streams, in hollows and at the foot of slopes, the water table is shallow. During a storm it rises to the surface, and rain falling on these saturated areas cannot infiltrate whatever its intensity. Groundwater may also seep out of the soil there (**return flow**). The saturated area expands during a storm and shrinks afterwards, so it is called a **variable source area**. Under this mechanism, runoff depends on the storm **depth** and the **antecedent wetness** of the catchment more than on intensity.
+**Saturation-excess overland flow.** In humid regions with permeable soils and vegetation, measured infiltration capacities are often higher than almost any rainfall intensity, yet streams still rise quickly. Field studies in the 1960s and 1970s showed why. Near streams, in hollows and at the foot of slopes, the water table is shallow. During a storm it rises to the surface, and rain falling on these saturated areas cannot infiltrate whatever its intensity. Groundwater may also seep out of the soil there (**return flow**). The saturated area expands during a storm and shrinks afterward, so it is called a **variable source area**. Under this mechanism, runoff depends on the storm **depth** and the **antecedent wetness** of the catchment more than on intensity.
 
 **Subsurface stormflow.** Water that infiltrates on a hillslope can move downslope through the soil above a less permeable layer, and especially through macropores such as root channels and animal burrows, reaching the stream within hours. Tracer studies show that much of the water in a storm hydrograph of a humid forested catchment is "old" water that was stored in the soil before the storm and was pushed out by the new rain.
 
@@ -103,10 +103,10 @@ where $v_j$ is the mean velocity, $d_j$ the depth and $w_j$ the width of strip $
 
 Plotting the measured discharges against the stage at the time of measurement gives the **stage–discharge relation**, or **rating curve**. At a section controlled by a downstream riffle or by the channel itself, it is usually well described by a power function:
 
-\begin{equation}
+\begin{equation*}
 Q = a\,(h - h_0)^b ,
 \tag{6.1}
-\end{equation}
+\end{equation*}
 
 where $h_0$ is the stage of zero flow, and $a$ and $b$ are fitted constants. The exponent reflects the hydraulics of the control: about 1.5 for a section that behaves like a broad weir, about 5/3 for a wide channel in uniform flow (from the [Manning equation](https://daehakim-waterlab.github.io/hydraulics/chapters/ch06_flow_in_open_channels.html#uniform-flow-the-chezy-and-manning-equations)), and larger for V-shaped or trapezoidal sections. Taking logarithms, $\ln Q = \ln a + b \ln(h - h_0)$, which is a straight line, so $a$ and $b$ can be found by linear regression once $h_0$ is chosen. The value of $h_0$ can be surveyed at the control or chosen to make the plot straightest.
 
@@ -177,10 +177,10 @@ Three graphical methods are common (Figure 6.3).
 1. **Constant discharge.** A horizontal line from the start of the rise. Simple, but it ignores the decline of baseflow and makes the direct runoff never end if the flow drops below the starting value.
 2. **Straight line to a fixed time after the peak.** A straight line joins the start of the rise to the point on the falling limb $N$ days after the peak. An empirical formula for $N$ (Linsley, Kohler and Paulhus, 1975), originally written as $N = A^{0.2}$ with $A$ in square miles, becomes in SI units
 
-\begin{equation}
+\begin{equation*}
 N = 0.827\,A^{0.2} \qquad (N \text{ in days},\ A \text{ in km}^2),
 \tag{6.2}
-\end{equation}
+\end{equation*}
 
 since $(1/2.59)^{0.2} = 0.827$. The code below checks the conversion.
 
@@ -218,21 +218,21 @@ for name, b in [("const", b_const), ("line", b_line)]:
 
 For long records, baseflow is separated automatically by treating the hydrograph as a signal: quickflow is the high-frequency part, baseflow the low-frequency part. The one-parameter filter of Lyne and Hollick (1979) computes the quickflow $q_f$ from the total flow $Q$ at successive time steps:
 
-\begin{equation}
+\begin{equation*}
 q_{f,t} = \alpha\, q_{f,t-1} + \frac{1 + \alpha}{2}\,\bigl(Q_t - Q_{t-1}\bigr),
 \qquad b_t = Q_t - q_{f,t},
 \tag{6.3}
-\end{equation}
+\end{equation*}
 
 with the constraint $0 \le b_t \le Q_t$. The filter parameter $\alpha$ controls how slowly baseflow may change; $\alpha = 0.925$ for daily data was recommended by Nathan and McMahon (1990) after comparing with graphical methods. The filter is often passed three times (forward, backward, forward) to smooth the result.
 
 Eckhardt (2005) derived a two-parameter filter from the assumption that the aquifer behaves as a linear reservoir (Chapter 5):
 
-\begin{equation}
+\begin{equation*}
 b_t = \frac{(1 - \text{BFI}_{\max})\,a\,b_{t-1} + (1 - a)\,\text{BFI}_{\max}\,Q_t}{1 - a\,\text{BFI}_{\max}},
 \qquad b_t \le Q_t ,
 \tag{6.4}
-\end{equation}
+\end{equation*}
 
 where $a$ is the recession constant of baseflow (Section 6.5) and $\text{BFI}_{\max}$ is the maximum long-term baseflow index that the filter can produce, which reflects the aquifer (Eckhardt suggested about 0.80 for perennial streams on porous aquifers, 0.50 for ephemeral streams on porous aquifers and 0.25 for perennial streams on hard rock).
 
@@ -296,10 +296,10 @@ for name, b in [("true", Qs), ("lh", b_lh), ("ek", b_ek)]:
 
 During dry weather the flow declines as the catchment drains. If the catchment behaves like a linear reservoir (Chapter 5),
 
-\begin{equation}
+\begin{equation*}
 Q_t = Q_0\, e^{-t/k} = Q_0\, K_r^{\,t}, \qquad K_r = e^{-\Delta t / k},
 \tag{6.5}
-\end{equation}
+\end{equation*}
 
 where $K_r$ is the **recession constant** per time step $\Delta t$ (for daily data, typically 0.85–0.995: smaller for fast components, larger for groundwater). On a semi-logarithmic plot an exponential recession is a straight line, which is why hydrographs are often plotted with a logarithmic discharge axis. In practice the recession constant often increases as flow decreases: fast stores drain first, and the slow aquifer controls the late recession. Overlaying many recession segments gives a **master recession curve** that summarizes this behavior.
 
@@ -311,7 +311,7 @@ The **baseflow index** (BFI) is the ratio of the volume of baseflow to the total
 
 ### The runoff ratio
 
-The **runoff ratio** (or runoff coefficient) is the fraction of precipitation that becomes streamflow. It can be computed for a single event, as direct runoff depth divided by storm rainfall, or for a long period, as $\bar{Q}/\bar{P}$ (Chapter 1). Event runoff ratios vary widely from storm to storm in the same catchment, from a few percent after a dry spell to more than half during a wet season, because they depend on antecedent wetness. This variability is the subject of Chapter 7.
+The runoff ratio, the fraction of precipitation that becomes streamflow (Chapter 1), can also be computed for a single event, as direct runoff depth divided by storm rainfall, or for a long period, as $\bar{Q}/\bar{P}$ (Chapter 1). Event runoff ratios vary widely from storm to storm in the same catchment, from a few percent after a dry spell to more than half during a wet season, because they depend on antecedent wetness. This variability is the subject of Chapter 7.
 
 ## 6.6 Worked examples
 

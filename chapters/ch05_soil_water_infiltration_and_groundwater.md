@@ -16,7 +16,7 @@ kernelspec:
 1. Soil is a porous medium. Its **volumetric water content** $\theta$ ranges from a small residual value to the **porosity**; between **field capacity** and the **wilting point** lies the water that plants can use.
 2. Water in unsaturated soil is held by capillary forces, so its pressure is below atmospheric. This negative pressure, the **matric potential** $\psi$, and the elevation together make up the **hydraulic head** that drives flow.
 3. **Darcy's law** says the flux is proportional to the gradient of head. In unsaturated soil the **hydraulic conductivity** falls steeply as the soil dries. Combining Darcy's law with conservation of mass gives the **Richards equation**.
-4. The **infiltration capacity** of a soil is high when it is dry and decreases towards a steady value during a storm. **Horton**, **Philip** and **Green–Ampt** describe this decrease; Green–Ampt does so from physical soil properties.
+4. The **infiltration capacity** of a soil is high when it is dry and decreases toward a steady value during a storm. **Horton**, **Philip** and **Green–Ampt** describe this decrease; Green–Ampt does so from physical soil properties.
 5. Under steady rain, runoff starts at the **ponding time**, when the infiltration capacity has fallen to the rainfall intensity.
 6. Water that drains below the root zone **recharges** groundwater. Aquifers release it slowly to streams as **baseflow**, which keeps rivers flowing between storms.
 ```
@@ -72,10 +72,10 @@ where $z$ is the elevation above a datum and $\psi$ is the **pressure head**. Be
 
 As a soil dries, the remaining water retreats into smaller pores, where capillary forces are stronger, so the suction increases. The relation between $\theta$ and $\psi$ is the **water retention curve** (soil moisture characteristic). A widely used formula is that of van Genuchten (1980):
 
-\begin{equation}
+\begin{equation*}
 \theta(\psi) = \theta_r + \frac{\theta_s - \theta_r}{\bigl[1 + (\alpha |\psi|)^{n_v}\bigr]^{m}}, \qquad m = 1 - \frac{1}{n_v},
 \tag{5.1}
-\end{equation}
+\end{equation*}
 
 where $\alpha$ (m⁻¹) is related to the inverse of the suction at which the largest pores start to drain and $n_v > 1$ to the spread of pore sizes. Field capacity and wilting point are conventionally taken as the water contents at $\psi = -3.4$ m (−33 kPa) and $\psi = -153$ m (−1500 kPa).
 
@@ -128,10 +128,10 @@ for name, (fc, wp) in avail.items():
 
 In 1856 Henry Darcy measured the flow of water through columns of sand for the fountains of Dijon and found that the discharge per unit area was proportional to the drop in head per unit length (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#groundwater-from-darcy-to-theis)). In one dimension:
 
-\begin{equation}
+\begin{equation*}
 q = -K_s \frac{dh}{dx},
 \tag{5.2}
-\end{equation}
+\end{equation*}
 
 where $q$ is the **Darcy flux** (volume per unit total area per unit time, with units of velocity), $K_s$ the **saturated hydraulic conductivity** and $dh/dx$ the **hydraulic gradient**. The minus sign means water flows down the gradient. The Darcy flux is not the speed of the water: water moves only through the pores, so the average **pore velocity** is $q/n_e$, where $n_e$ is the effective porosity. Saturated conductivity ranges over many orders of magnitude: roughly 10–1000 mm h⁻¹ for sands, 1–50 mm h⁻¹ for loams and less than 1 mm h⁻¹ for clays, before the effect of macropores is considered.
 
@@ -141,21 +141,21 @@ Darcy's law is the porous-medium version of laminar pipe flow: at the low veloci
 
 Edgar Buckingham (1907) extended Darcy's law to unsaturated soil. The flux is still driven by the gradient of total head, but the conductivity now depends on the water content:
 
-\begin{equation}
+\begin{equation*}
 q = -K(\psi)\,\frac{\partial h}{\partial z} = -K(\psi)\left(\frac{\partial \psi}{\partial z} + 1\right),
 \tag{5.3}
-\end{equation}
+\end{equation*}
 
 with $z$ taken positive upward. When a soil dries, its water occupies only the smaller pores, and the paths through the soil become thin and tortuous. Conductivity therefore falls very steeply, by several orders of magnitude over the normal range of water contents (Figure 5.1b). This nonlinearity is the main reason soil water physics is difficult.
 
 ### The Richards equation
 
-Conservation of mass for a thin horizontal slice of soil says that the water content increases at the rate at which more water flows in from above than leaves below: $\partial\theta/\partial t = -\partial q / \partial z$. Substituting Equation (5.3) gives the **Richards equation** (Richards, 1931) for vertical flow:
+Conservation of mass for a thin horizontal slice of soil says that the water content increases at the rate at which more water flows in from above than leaves below: $\partial\theta/\partial t = -\partial q / \partial z$. Substituting Equation (5.3) gives the **Richards equation** (Richards, 1931; see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)) for vertical flow:
 
-\begin{equation}
+\begin{equation*}
 \frac{\partial \theta}{\partial t} = \frac{\partial}{\partial z}\left[K(\psi)\left(\frac{\partial \psi}{\partial z} + 1\right)\right].
 \tag{5.4}
-\end{equation}
+\end{equation*}
 
 Together with the retention curve $\theta(\psi)$ and the conductivity function $K(\psi)$, it describes infiltration, redistribution, drainage and evaporation from the soil. It is strongly nonlinear and must usually be solved numerically. For engineering, its main role is as the physical basis for the simpler infiltration equations that follow.
 
@@ -168,18 +168,18 @@ Together with the retention curve $\theta(\psi)$ and the conductivity function $
 
 The **cumulative infiltration** $F(t) = \int_0^t f\, dt$ is the depth that has entered the soil.
 
-At the start of a storm a dry soil absorbs water quickly: the suction gradient at the surface pulls water in, in addition to gravity. As the wetted zone deepens, the suction gradient spreads out and weakens, and the infiltration capacity falls towards a steady value close to the saturated conductivity, at which only gravity drives the flow. All the equations below describe this decay.
+At the start of a storm a dry soil absorbs water quickly: the suction gradient at the surface pulls water in, in addition to gravity. As the wetted zone deepens, the suction gradient spreads out and weakens, and the infiltration capacity falls toward a steady value close to the saturated conductivity, at which only gravity drives the flow. All the equations below describe this decay.
 
 ### Horton's equation
 
 Robert Horton (1933, 1940) proposed an empirical exponential decay (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)):
 
-\begin{equation}
+\begin{equation*}
 f_p(t) = f_c + (f_0 - f_c)\,e^{-k_H t},
 \qquad
 F(t) = f_c\,t + \frac{f_0 - f_c}{k_H}\bigl(1 - e^{-k_H t}\bigr),
 \tag{5.5}
-\end{equation}
+\end{equation*}
 
 where $f_0$ is the initial capacity, $f_c$ the final (steady) capacity and $k_H$ a decay constant (h⁻¹). The three parameters are fitted to measurements, typically from a ring infiltrometer. Horton's equation is easy to use, but its parameters have no direct physical meaning and depend on the initial wetness of the soil.
 
@@ -187,18 +187,18 @@ where $f_0$ is the initial capacity, $f_c$ the final (steady) capacity and $k_H$
 
 John Philip (1957) solved the Richards equation for infiltration from a ponded surface as a series in powers of $t^{1/2}$. Its first two terms give
 
-\begin{equation}
-F(t) = S\,t^{1/2} + A\,t,
+\begin{equation*}
+F(t) = S_p\,t^{1/2} + A_p\,t,
 \qquad
-f_p(t) = \tfrac{1}{2}\,S\,t^{-1/2} + A ,
+f_p(t) = \tfrac{1}{2}\,S_p\,t^{-1/2} + A_p ,
 \tag{5.6}
-\end{equation}
+\end{equation*}
 
-where $S$ is the **sorptivity** (mm h⁻¹ᐟ²), which measures the capillary pull of the dry soil, and $A$ is a constant of the order of $K_s$ (usually between $K_s/3$ and $2K_s/3$). At early times the $t^{1/2}$ term dominates, as in horizontal absorption by a sponge; at late times gravity takes over.
+where $S_p$ is the **sorptivity** (mm h⁻¹ᐟ²), which measures the capillary pull of the dry soil, and $A_p$ is a constant of the order of $K_s$ (usually between $K_s/3$ and $2K_s/3$). At early times the $t^{1/2}$ term dominates, as in horizontal absorption by a sponge; at late times gravity takes over.
 
 ### The Green–Ampt model
 
-W. H. Green and G. A. Ampt (1911) idealized infiltration as a sharp **wetting front** moving down into the soil: behind the front the soil is saturated, ahead of it the soil keeps its initial water content $\theta_i$ (Figure 5.2). This "piston" picture is a fair description of infiltration into dry, coarse soils and gives an equation whose parameters are physical.
+W. H. Green and G. A. Ampt (1911) (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)) idealized infiltration as a sharp **wetting front** moving down into the soil: behind the front the soil is saturated, ahead of it the soil keeps its initial water content $\theta_i$ (Figure 5.2). This "piston" picture is a fair description of infiltration into dry, coarse soils and gives an equation whose parameters are physical.
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -233,17 +233,17 @@ $$
 
 The cumulative infiltration fills the wetted zone, $F = L\,\Delta\theta$ with $\Delta\theta = \theta_s - \theta_i$. Eliminating $L$:
 
-\begin{equation}
+\begin{equation*}
 f_p = K_s\left(1 + \frac{\psi_f\,\Delta\theta}{F}\right).
 \tag{5.7}
-\end{equation}
+\end{equation*}
 
 Since $f = dF/dt$, this is a differential equation for $F$. Separating variables and integrating from $F = 0$ at $t = 0$ gives
 
-\begin{equation}
+\begin{equation*}
 K_s\,t = F - \psi_f\,\Delta\theta\,\ln\!\left(1 + \frac{F}{\psi_f\,\Delta\theta}\right).
 \tag{5.8}
-\end{equation}
+\end{equation*}
 
 **Solving for $F$.** Equation (5.8) gives $t$ for a known $F$ but cannot be solved for $F$ algebraically: it is **implicit**. Newton's method converges in a few iterations. Write $a = \psi_f \Delta\theta$ and
 
@@ -286,7 +286,7 @@ horton_f = lambda t, f0, fc, k: fc + (f0 - fc) * np.exp(-k * t)
 
 fig, ax = plt.subplots(figsize=(6.4, 4.0))
 ax.plot(t, f_ga, color=c1, lw=2.4, label="Green–Ampt")
-ax.plot(t, f_ph, color=c2, lw=2.0, ls="--", label=f"Philip, S = {S:.0f} mm h⁻¹ᐟ², A = $K_s$/2")
+ax.plot(t, f_ph, color=c2, lw=2.0, ls="--", label=f"Philip, $S_p$ = {S:.0f} mm h⁻¹ᐟ², $A_p$ = $K_s$/2")
 ax.plot(t, horton_f(t, f0, fc, kH), color=c3, lw=2.0, ls="-.", label="Horton, fitted")
 ax.axhline(Ks, color=ink2, lw=0.8, ls=":"); ax.text(0.05, Ks - 4.0, "$K_s$", color=ink2)
 ax.set_xlabel("Time since ponding (h)"); ax.set_ylabel("Infiltration capacity $f_p$ (mm h⁻¹)")
@@ -304,12 +304,12 @@ The equations above assume the surface is ponded from the start. Under rain of i
 
 With the Green–Ampt model and constant $i > K_s$, set $f_p = i$ in Equation (5.7). The cumulative infiltration at ponding is
 
-\begin{equation}
+\begin{equation*}
 F_p = \frac{K_s\,\psi_f\,\Delta\theta}{i - K_s},
 \qquad
 t_p = \frac{F_p}{i} .
 \tag{5.9}
-\end{equation}
+\end{equation*}
 
 If $i \le K_s$, the soil can absorb the rain indefinitely and ponding never occurs. After ponding, infiltration proceeds at capacity. Because the soil already holds $F_p$, the cumulative infiltration follows Equation (5.8) written from the ponding point:
 
@@ -354,7 +354,7 @@ glue("tp_min", float(tp * 60), display=False); glue("Fp", float(Fp), display=Fal
 glue("F_end", float(F[-1]), display=False); glue("Pe_end", float(i * D - F[-1]), display=False)
 ```
 
-*Figure 5.4. Green–Ampt infiltration under rain of 30 mm h⁻¹ for 2 hours on the soil of Figure 5.3. All the rain infiltrates until ponding at {glue:text}`tp_min:.0f` minutes, when {glue:text}`Fp:.1f` mm has entered the soil. Afterwards the infiltration rate falls and the shaded excess grows. Of the 60 mm of rain, {glue:text}`F_end:.1f` mm infiltrates and {glue:text}`Pe_end:.1f` mm is excess.*
+*Figure 5.4. Green–Ampt infiltration under rain of 30 mm h⁻¹ for 2 hours on the soil of Figure 5.3. All the rain infiltrates until ponding at {glue:text}`tp_min:.0f` minutes, when {glue:text}`Fp:.1f` mm has entered the soil. Afterward the infiltration rate falls and the shaded excess grows. Of the 60 mm of rain, {glue:text}`F_end:.1f` mm infiltrates and {glue:text}`Pe_end:.1f` mm is excess.*
 
 ## 5.6 Groundwater
 
@@ -365,20 +365,20 @@ Below the **water table** the pores are saturated and the pressure head is posit
 Aquifers release water from storage in different ways:
 
 - an unconfined aquifer drains pores as the water table falls; the volume released per unit area per unit fall is the **specific yield** $S_y$, typically 0.05–0.3;
-- a confined aquifer stays saturated and releases water only by compression of the skeleton and expansion of water; its **storativity** $S$ is tiny, typically $10^{-5}$–$10^{-3}$.
+- a confined aquifer stays saturated and releases water only by compression of the skeleton and expansion of water; its **storativity** $S_c$ (storage coefficient) is tiny, typically $10^{-5}$–$10^{-3}$.
 
-The ability of an aquifer of thickness $b$ to transmit water is its **transmissivity** $T = K_s\,b$ (m² d⁻¹).
+The ability of an aquifer of thickness $b$ to transmit water is its **transmissivity** $K_s\,b$ (m² d⁻¹), the product of conductivity and thickness.
 
 ### The groundwater flow equation
 
 Applying conservation of mass to a vertical column of aquifer and using Darcy's law for horizontal flow gives, for a confined aquifer with recharge $R$ (m d⁻¹),
 
-\begin{equation}
-S\,\frac{\partial h}{\partial t} = T\left(\frac{\partial^2 h}{\partial x^2} + \frac{\partial^2 h}{\partial y^2}\right) + R .
+\begin{equation*}
+S_c\,\frac{\partial h}{\partial t} = K_s\,b\left(\frac{\partial^2 h}{\partial x^2} + \frac{\partial^2 h}{\partial y^2}\right) + R .
 \tag{5.10}
-\end{equation}
+\end{equation*}
 
-In words: the change of storage in the column equals the net lateral inflow plus the recharge. For an unconfined aquifer, $S$ becomes $S_y$ and the transmissivity is $K_s h$, which changes with the saturated thickness (the **Boussinesq equation**); if the water table varies little, Equation (5.10) is still a good approximation. The **Dupuit assumptions** (nearly horizontal flow, head constant with depth) are what make this two-dimensional form possible.
+In words: the change of storage in the column equals the net lateral inflow plus the recharge. For an unconfined aquifer, $S_c$ becomes $S_y$ and the transmissivity is $K_s h$, which changes with the saturated thickness (the **Boussinesq equation**); if the water table varies little, Equation (5.10) is still a good approximation. The **Dupuit assumptions** (nearly horizontal flow, head constant with depth) are what make this two-dimensional form possible.
 
 ### Recharge and baseflow
 
@@ -386,19 +386,19 @@ In words: the change of storage in the column equals the net lateral inflow plus
 
 Where an aquifer meets a stream whose level is below the water table, groundwater seeps into the channel. This **baseflow** sustains streamflow during dry weather. Consider a strip of unconfined aquifer between two parallel streams $2L$ apart, both at water level $h_0$ above an impermeable base, with uniform steady recharge $R$. The Dupuit approximation gives the water table
 
-\begin{equation}
+\begin{equation*}
 h^2(x) = h_0^2 + \frac{R}{K_s}\,x\,(2L - x),
 \tag{5.11}
-\end{equation}
+\end{equation*}
 
 a mound highest midway between the streams, and each stream receives a baseflow of $R\,L$ per unit length of bank: in steady state, everything that recharges the aquifer comes out as baseflow (Example 5.6).
 
 When recharge stops, the aquifer drains and baseflow declines. If the outflow is proportional to the water stored, $Q = S/k$, the water balance $dS/dt = -Q$ gives an exponential **recession**:
 
-\begin{equation}
+\begin{equation*}
 Q(t) = Q_0\, e^{-t/k} .
 \tag{5.12}
-\end{equation}
+\end{equation*}
 
 The aquifer then behaves as a **linear reservoir** with storage constant $k$. This simple model reappears in the analysis of recessions (Chapter 6) and of the whole catchment (Chapter 9).
 

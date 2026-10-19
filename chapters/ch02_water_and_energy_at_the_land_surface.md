@@ -16,7 +16,7 @@ kernelspec:
 1. The sun powers the water cycle. The energy that reaches the ground and stays there is the **net radiation** $R_n$: incoming solar radiation minus the reflected part, plus the longwave exchange between the surface and the sky.
 2. The surface cannot store much energy, so net radiation is shared out at once: $R_n - G = \lambda E + H$. Energy used to evaporate water ($\lambda E$) is not available to warm the air ($H$).
 3. Evaporating **1 mm of water takes about 2.45 MJ per square meter**. This single number links the energy balance to the water balance.
-4. Rising air cools by expansion, by about 10 °C per km while unsaturated. When it cools to its **dew point**, vapor condenses into cloud. This is the first step towards precipitation.
+4. Rising air cools by expansion, by about 10 °C per km while unsaturated. When it cools to its **dew point**, vapor condenses into cloud. This is the first step toward precipitation.
 5. The amount of vapor that air can hold, the **saturation vapor pressure**, rises by about 6–7% for every degree of warming (the Clausius–Clapeyron relation).
 6. Humidity can be expressed as vapor pressure, relative humidity, specific humidity or dew point. They are different views of the same quantity, and each is easy to compute from the others.
 ```
@@ -64,10 +64,10 @@ where $\sigma = 5.67 \times 10^{-8}$ W m⁻² K⁻⁴ is the Stefan–Boltzmann 
 
 Adding the four terms gives the **net radiation**:
 
-\begin{equation}
+\begin{equation*}
 R_n = (1 - \alpha)\,K_\downarrow + L_\downarrow - L_\uparrow .
 \tag{2.1}
-\end{equation}
+\end{equation*}
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -100,10 +100,10 @@ It is convenient to know two conversions. A flux of 1 W m⁻² sustained for a d
 
 The land surface is a thin layer with almost no capacity to store heat. Energy arriving as net radiation must therefore leave at once through three routes:
 
-\begin{equation}
+\begin{equation*}
 R_n = \lambda E + H + G ,
 \tag{2.2}
-\end{equation}
+\end{equation*}
 
 or, written the way it is used in this book,
 
@@ -115,7 +115,7 @@ $$
 - $H$ is the **sensible heat flux**: energy that warms the air by conduction and turbulent mixing, which we can "sense" as a change of temperature;
 - $G$ is the **ground heat flux** into the soil (or into a lake).
 
-All terms are fluxes per unit area (W m⁻² or MJ m⁻² d⁻¹), taken as positive when $R_n$ is directed towards the surface and the other three are directed away from it. The term $R_n - G$ is called the **available energy**. Over a full day $G$ is small, because heat that enters the soil in the morning comes out again at night; over a year it is close to zero. For daily calculations it is often set to zero (Chapter 4).
+All terms are fluxes per unit area (W m⁻² or MJ m⁻² d⁻¹), taken as positive when $R_n$ is directed toward the surface and the other three are directed away from it. The term $R_n - G$ is called the **available energy**. Over a full day $G$ is small, because heat that enters the soil in the morning comes out again at night; over a year it is close to zero. For daily calculations it is often set to zero (Chapter 4).
 
 Figure 2.2 shows a typical clear summer day over a well-watered crop. Net radiation follows the sun and becomes slightly negative at night, when the surface loses longwave radiation to the sky. Most of the daytime energy goes into evaporation. Over a dry surface the same net radiation would go mostly into $H$, which is why the air over a dry field or a city is hotter than over an irrigated field.
 
@@ -293,26 +293,26 @@ $$
 
 where $T$ is in kelvin and $v_v$, $v_l$ are the specific volumes of vapor and liquid. The liquid volume is about a thousand times smaller than the vapor volume and can be ignored. Treating vapor as an ideal gas, $v_v = R_v T / e_s$ with $R_v = 461.5$ J kg⁻¹ K⁻¹, gives the **Clausius–Clapeyron equation**:
 
-\begin{equation}
+\begin{equation*}
 \frac{1}{e_s}\frac{de_s}{dT} = \frac{\lambda}{R_v T^{2}} .
 \tag{2.3}
-\end{equation}
+\end{equation*}
 
 At 20 °C (293 K) the right side is $2.45\times10^{6} / (461.5 \times 293^2) \approx 0.062$ K⁻¹: **the saturation vapor pressure increases by about 6% per degree**. This exponential sensitivity has large consequences. Warm air can carry much more water than cold air, which is why the heaviest rainfalls occur in summer and in the tropics, and why a warmer climate is expected to intensify extreme rainfall (Chapter 13).
 
 For practical work, an empirical fit to measured values is used. This book uses the **Tetens formula** in the form adopted by FAO-56:
 
-\begin{equation}
+\begin{equation*}
 e_s(T_a) = 0.6108 \exp\!\left(\frac{17.27\, T_a}{T_a + 237.3}\right) \quad (\text{kPa},\ T_a \text{ in °C}).
 \tag{2.4}
-\end{equation}
+\end{equation*}
 
 Its derivative, the **slope of the saturation vapor pressure curve**, appears in every combination equation for evaporation (Chapter 4):
 
-\begin{equation}
+\begin{equation*}
 \Delta = \frac{de_s}{dT_a} = \frac{4098\, e_s(T_a)}{(T_a + 237.3)^{2}} \quad (\text{kPa °C}^{-1}).
 \tag{2.5}
-\end{equation}
+\end{equation*}
 
 The code below checks that the Tetens formula and its derivative agree with the integrated Clausius–Clapeyron equation.
 
@@ -380,17 +380,17 @@ glue("rh_ex", float(e_air / es_kPa(Ta) * 100), display=False)
 
 A **psychrometer** has two thermometers. One measures the air temperature (the dry bulb). The other is wrapped in a wet wick (the wet bulb). Evaporation from the wick cools it until the heat drawn from the passing air balances the latent heat used, at the **wet-bulb temperature** $T_w$. The drier the air, the faster the evaporation and the larger the wet-bulb depression $T_a - T_w$. An energy balance on the wick gives
 
-\begin{equation}
+\begin{equation*}
 e = e_s(T_w) - \gamma_{\text{psy}}\, (T_a - T_w),
 \tag{2.6}
-\end{equation}
+\end{equation*}
 
 where $\gamma_{\text{psy}} = a\, p$ is the psychrometer constant, with $a \approx 6.62 \times 10^{-4}$ °C⁻¹ for a ventilated psychrometer (FAO-56). The same group of terms, the **psychrometric constant**
 
-\begin{equation}
+\begin{equation*}
 \gamma = \frac{c_p\, p}{\varepsilon\, \lambda} \approx 0.665 \times 10^{-3}\, p \quad (\text{kPa °C}^{-1}),
 \tag{2.7}
-\end{equation}
+\end{equation*}
 
 appears in the Penman equation (Chapter 4). It depends on air pressure, which falls with elevation $z$ (m) roughly as
 

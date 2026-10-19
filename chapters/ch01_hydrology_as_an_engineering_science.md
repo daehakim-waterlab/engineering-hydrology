@@ -179,10 +179,10 @@ Two cautions apply. First, the **topographic divide** drawn from surface elevati
 
 Take the catchment as a **control volume** that extends from the top of the vegetation down to an impermeable layer below the soil and groundwater. Water enters as precipitation and leaves as evaporation and streamflow. Water is incompressible for our purposes (see Chapter 1 of the [Hydraulics](https://daehakim-waterlab.github.io/hydraulics/) book), so conservation of mass is the same as conservation of volume:
 
-\begin{equation}
+\begin{equation*}
 \frac{dS}{dt} = P - E - Q + Q_{g,\mathrm{in}} - Q_{g,\mathrm{out}},
 \tag{1.1}
-\end{equation}
+\end{equation*}
 
 where
 
@@ -220,12 +220,12 @@ $$
 
 The same argument with 3600 s gives the hourly form,
 
-\begin{equation}
+\begin{equation*}
 q\ (\text{mm h}^{-1}) = 3.6\,\frac{Q}{A}
 \qquad \Longleftrightarrow \qquad
 Q\ (\text{m}^3\,\text{s}^{-1}) = \frac{q\,A}{3.6} = 0.278\, q\, A ,
 \tag{1.2}
-\end{equation}
+\end{equation*}
 
 with $q$ in mm h⁻¹ and $A$ in km². Equation (1.2) will reappear in Chapter 8 as the heart of the rational method. Remember the key number: **1 mm of water over 1 km² is 1000 m³**.
 
@@ -252,12 +252,12 @@ $$
 \frac{S(N) - S(0)}{N} = \bar{P} - \bar{E} - \bar{Q},
 $$
 
-where the bars denote annual means. The left side is a bounded number divided by $N$, so it shrinks towards zero as the record grows. For a long record,
+where the bars denote annual means. The left side is a bounded number divided by $N$, so it shrinks toward zero as the record grows. For a long record,
 
-\begin{equation}
+\begin{equation*}
 \bar{Q} \approx \bar{P} - \bar{E}.
 \tag{1.3}
-\end{equation}
+\end{equation*}
 
 This simple result is very useful. If precipitation and streamflow are measured, Equation (1.3) gives the long-term evapotranspiration, which is hard to measure directly (Chapter 4). The ratio $\bar{Q}/\bar{P}$ is the long-term **runoff ratio**, a first summary of a catchment's climate and soils.
 
@@ -272,14 +272,14 @@ doy = np.arange(nd) % 365
 season = np.clip(np.sin(2 * np.pi * (doy - 100) / 365), 0, None)  # wet summer
 p_wet = 0.18 + 0.30 * season                                       # chance of a wet day
 P = np.where(rng.random(nd) < p_wet, rng.exponential(11.0, nd), 0.0)   # mm/d
-Ep = 2.4 + 2.0 * np.sin(2 * np.pi * (doy - 100) / 365)             # potential ET, mm/d
+Ep = 2.4 + 2.0 * np.sin(2 * np.pi * (doy - 100) / 365)             # potential evapotranspiration, mm/d
 
 Smax, kb = 300.0, 60.0          # bucket capacity (mm) and drainage time constant (d)
 S = np.empty(nd + 1); S[0] = 150.0
 E = np.empty(nd); Q = np.empty(nd)
 for t in range(nd):
     s = S[t] + P[t]
-    E[t] = min(Ep[t] * min(1.0, s / (0.6 * Smax)), s)   # ET falls when the soil dries
+    E[t] = min(Ep[t] * min(1.0, s / (0.6 * Smax)), s)   # evapotranspiration falls when the soil dries
     s -= E[t]
     over = max(s - Smax, 0.0)                 # spill when the bucket is full
     s -= over
@@ -303,7 +303,7 @@ a2.bar(np.arange(1, nyr + 1), imb, color=c2, alpha=0.45, label="Annual ΔS = P �
 a2.plot(np.arange(1, nyr + 1), running, color=ink, lw=2, label="Mean over the first N years")
 a2.axhline(0, color=ink2, lw=0.8)
 a2.set_xlabel("Number of years N"); a2.set_ylabel("mm per year")
-a2.set_title("(b) The long-term mean storage change shrinks towards zero")
+a2.set_title("(b) The long-term mean storage change shrinks toward zero")
 a2.legend(loc="upper right", fontsize=9.5); a2.set_xlim(0.3, nyr + 0.7)
 plt.show()
 

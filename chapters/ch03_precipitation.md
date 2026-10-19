@@ -63,7 +63,7 @@ Hydrologists classify precipitation by the mechanism that lifts the air. Each ty
 
 **Orographic precipitation.** Mountains force moist air to rise on their windward side (Figure 2.3). Precipitation increases with elevation on that side and decreases sharply on the lee side, in the **rain shadow**. Orography also enhances frontal and convective rain, so mountain catchments typically receive more precipitation than the lowland gauges around them suggest.
 
-**Tropical cyclones.** Tropical cyclones (called **typhoons** in the western North Pacific) form over oceans warmer than about 26 °C. Warm, humid air spirals in towards a low-pressure center and rises in a ring of towering clouds around the calm **eye**, releasing enormous amounts of latent heat that sustain the storm. They combine strong wind, storm surge and very heavy rain over hundreds of kilometers. When a typhoon meets a mountain range, the orographic lift can produce several hundred millimeters of rain in a day. In Korea, typhoons arrive mainly in late summer and early autumn and cause many of the largest floods.
+**Tropical cyclones.** Tropical cyclones (called **typhoons** in the western North Pacific) form over oceans warmer than about 26 °C. Warm, humid air spirals in toward a low-pressure center and rises in a ring of towering clouds around the calm **eye**, releasing enormous amounts of latent heat that sustain the storm. They combine strong wind, storm surge and very heavy rain over hundreds of kilometers. When a typhoon meets a mountain range, the orographic lift can produce several hundred millimeters of rain in a day. In Korea, typhoons arrive mainly in late summer and early autumn and cause many of the largest floods.
 
 **The East Asian summer rainy season.** In early summer, a nearly stationary front forms between warm, humid air on the western flank of the North Pacific subtropical high and cooler air to the north. Along this front, called *Changma* in Korea (*Meiyu* in China and *Baiu* in Japan), a long belt of cloud brings repeated heavy rain for several weeks. The front moves north as the subtropical high expands, so the rainy period begins earlier in the south. Its rain falls on soils that are progressively wetter, so floods during Changma are often caused by several days of rain rather than by a single short burst. Embedded convective cells can still produce very intense rain locally.
 
@@ -155,10 +155,10 @@ Gauges fail, and records have gaps. A missing value at station $x$ is estimated 
 
 **Inverse distance weighting (IDW)** gives each neighbor a weight that falls with its distance $d_i$ from the station:
 
-\begin{equation}
+\begin{equation*}
 \hat{P}_x = \frac{\sum_{i=1}^{n} w_i P_i}{\sum_{i=1}^{n} w_i}, \qquad w_i = \frac{1}{d_i^{\,b}} ,
 \tag{3.1}
-\end{equation}
+\end{equation*}
 
 where the exponent $b$ is usually 2. Close stations dominate the estimate, and the estimate always lies between the smallest and largest neighboring values. IDW ignores differences in climate between stations, which is a problem in mountainous terrain.
 
@@ -315,10 +315,10 @@ where $h_s$ is the snow depth and $\rho_s$ the snow density. Fresh snow has a de
 
 **Degree-day melt.** Melting a snowpack takes energy: 0.334 MJ per kilogram of ice (Chapter 2), on top of warming the pack to 0 °C. A full energy balance needs radiation, wind and humidity data. The simplest practical model uses air temperature alone as an index of the available energy:
 
-\begin{equation}
+\begin{equation*}
 M = \begin{cases} C_m\,(T_a - T_b) & T_a > T_b \\ 0 & T_a \le T_b \end{cases}
 \tag{3.2}
-\end{equation}
+\end{equation*}
 
 where $M$ is the daily melt (mm d⁻¹), $T_a$ the daily mean air temperature, $T_b$ a base temperature (usually 0 °C) and $C_m$ the **degree-day factor**, typically 2–6 mm °C⁻¹ d⁻¹ for snow. The factor is larger late in the season, when the snow is older and darker and the sun is stronger, and in open terrain than under forest. It must be calibrated for each region. The method works because, over a day, air temperature is correlated with the main energy inputs (incoming longwave radiation and sensible heat).
 

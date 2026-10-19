@@ -16,7 +16,7 @@ kernelspec:
 1. Evaporation needs three things: **energy** to change liquid into vapor, a **vapor pressure deficit** and turbulence to carry the vapor away, and a **supply of water** at the surface. The scarcest of the three controls the rate.
 2. **Mass-transfer** (Dalton-type) equations describe the transport of vapor; the **energy balance** describes the supply of energy. Each alone needs the surface temperature, which is rarely known.
 3. **Penman** combined the two and eliminated the surface temperature. The result needs only standard weather data: net radiation, air temperature, humidity and wind speed.
-4. **Penman–Monteith** adds a **surface resistance** for the stomata of plants. With fixed resistances for a reference grass it becomes the **FAO-56 reference evapotranspiration** $E_0$, the world standard. Crop coefficients $K_c$ and a water-stress coefficient $K_s$ adapt it to real crops and drying soils.
+4. **Penman–Monteith** adds a **surface resistance** for the stomata of plants. With fixed resistances for a reference grass it becomes the **FAO-56 reference evapotranspiration** $E_0$, the world standard. Crop coefficients $K_c$ and a water-stress coefficient $K_w$ adapt it to real crops and drying soils.
 5. **Priestley–Taylor** keeps only the energy term, multiplied by 1.26. It works well for wet surfaces in humid climates.
 6. **Actual** evapotranspiration $E$ is usually less than **potential** evapotranspiration $E_p$. Over many years it can be found from the catchment water balance as $E = P - Q$, and the ratios $E/P$ and $E/E_p$ summarize whether a catchment is limited by water or by energy.
 ```
@@ -76,10 +76,10 @@ $$
 
 just as an electric current equals a voltage difference divided by a resistance. The **aerodynamic resistance** $r_a$ (s m⁻¹) falls as wind speed rises and as the surface gets rougher. Above a uniform crop of height $h$, the logarithmic wind profile gives
 
-\begin{equation}
+\begin{equation*}
 r_a = \frac{\ln\!\left[\dfrac{z_m - d}{z_{om}}\right]\ln\!\left[\dfrac{z_h - d}{z_{oh}}\right]}{k^2\, u_z},
 \tag{4.1}
-\end{equation}
+\end{equation*}
 
 where $z_m$ and $z_h$ are the heights of the wind and humidity measurements, $d \approx \tfrac{2}{3}h$ is the zero-plane displacement, $z_{om} \approx 0.123\,h$ and $z_{oh} \approx 0.1\, z_{om}$ are roughness lengths for momentum and vapor, $k = 0.41$ is von Kármán's constant and $u_z$ is the wind speed at height $z_m$. A tall forest has a resistance about ten times smaller than short grass at the same wind speed, so it exchanges vapor and heat with the air much more easily.
 
@@ -87,10 +87,10 @@ where $z_m$ and $z_h$ are the heights of the wind and humidity measurements, $d 
 
 Writing vapor density in terms of vapor pressure (Chapter 2) and multiplying by $\lambda$ gives the latent heat flux:
 
-\begin{equation}
+\begin{equation*}
 \lambda E = \frac{\rho_a c_p}{\gamma}\, \frac{e_s(T_s) - e_a}{r_a} ,
 \tag{4.2}
-\end{equation}
+\end{equation*}
 
 where $\rho_a$ is the air density, $c_p = 1.013\times10^{-3}$ MJ kg⁻¹ °C⁻¹ the specific heat of air, $\gamma$ the psychrometric constant, $e_s(T_s)$ the saturation vapor pressure at the temperature of the wet surface and $e_a$ the actual vapor pressure of the air. The equation says the evaporation rate is proportional to the vapor pressure difference and to a function of wind speed. John Dalton reached this conclusion experimentally in 1802 (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#evaporation-and-the-atmosphere)), and many empirical lake-evaporation formulas have the form
 
@@ -104,10 +104,10 @@ The weakness of all mass-transfer equations is the **surface temperature** $T_s$
 
 The other route to $E$ is the surface energy balance of Chapter 2, $R_n - G = \lambda E + H$. The sensible heat flux has the same resistance form as the vapor flux, driven by a temperature difference:
 
-\begin{equation}
+\begin{equation*}
 H = \rho_a c_p \frac{T_s - T_a}{r_a}.
 \tag{4.3}
-\end{equation}
+\end{equation*}
 
 The ratio of sensible to latent heat flux is the **Bowen ratio**, $\beta = H / \lambda E$. If heat and vapor are carried by the same eddies, the resistances cancel and
 
@@ -117,10 +117,10 @@ $$
 
 where $\Delta T$ and $\Delta e$ are the differences of temperature and vapor pressure measured between two heights above the surface. Substituting $H = \beta \lambda E$ into the energy balance gives
 
-\begin{equation}
+\begin{equation*}
 E = \frac{R_n - G}{\lambda\,(1 + \beta)} .
 \tag{4.4}
-\end{equation}
+\end{equation*}
 
 The **Bowen ratio energy balance** method uses this equation with measured $R_n$, $G$ and the two gradients. Typical Bowen ratios are about 0.1 over oceans, 0.2–0.5 over well-watered crops and forests, and 2–10 over dry land. A negative value means the air is warmer than the surface and supplies heat for evaporation, which happens over irrigated fields in a dry region.
 
@@ -136,41 +136,41 @@ $$
 
 where $\Delta$ is the slope of the saturation vapor pressure curve at the air temperature (Equation (2.5) in Chapter 2).
 
-**Step 2: rewrite the latent heat flux.** Substituting into Equation (4.2), and writing $D = e_s(T_a) - e_a$ for the vapor pressure deficit of the air,
+**Step 2: rewrite the latent heat flux.** Substituting into Equation (4.2), and writing $\delta e = e_s(T_a) - e_a$ for the vapor pressure deficit of the air,
 
 $$
-\lambda E = \frac{\rho_a c_p}{\gamma\, r_a}\bigl[\Delta (T_s - T_a) + D\bigr]
-= \frac{\Delta}{\gamma}\, H + \frac{\rho_a c_p\, D}{\gamma\, r_a},
+\lambda E = \frac{\rho_a c_p}{\gamma\, r_a}\bigl[\Delta (T_s - T_a) + \delta e\bigr]
+= \frac{\Delta}{\gamma}\, H + \frac{\rho_a c_p\, \delta e}{\gamma\, r_a},
 $$
 
 using Equation (4.3) for $H$. The unknown surface temperature is now hidden in $H$.
 
 **Step 3: use the energy balance.** Replace $H$ by $R_n - G - \lambda E$ and solve for $\lambda E$:
 
-\begin{equation}
-\lambda E = \frac{\Delta\,(R_n - G) + \rho_a c_p\, D / r_a}{\Delta + \gamma} .
+\begin{equation*}
+\lambda E = \frac{\Delta\,(R_n - G) + \rho_a c_p\, \delta e / r_a}{\Delta + \gamma} .
 \tag{4.5}
-\end{equation}
+\end{equation*}
 
 This is the **Penman equation** for a wet surface. It contains only quantities measured at a weather station. Its two terms have a clear meaning. The first, weighted by $\Delta/(\Delta + \gamma)$, is the evaporation driven by **available energy**. The second, weighted by $\gamma/(\Delta + \gamma)$, is the evaporation driven by the **drying power of the air**. Because $\Delta$ grows with temperature (about 0.145 kPa °C⁻¹ at 20 °C against $\gamma \approx 0.067$ kPa °C⁻¹), the energy term dominates in warm weather.
 
 For open water, Penman fitted the aerodynamic term with an empirical wind function. In SI units the commonly used form (Shuttleworth, 1993) is
 
-\begin{equation}
-E = \frac{1}{\lambda}\left[\frac{\Delta}{\Delta + \gamma}\, R_n + \frac{\gamma}{\Delta + \gamma}\; 6.43\,(1 + 0.536\,u_2)\, D\right],
+\begin{equation*}
+E = \frac{1}{\lambda}\left[\frac{\Delta}{\Delta + \gamma}\, R_n + \frac{\gamma}{\Delta + \gamma}\; 6.43\,(1 + 0.536\,u_2)\, \delta e\right],
 \tag{4.6}
-\end{equation}
+\end{equation*}
 
-with $E$ in mm d⁻¹, $R_n$ in MJ m⁻² d⁻¹ (computed with the albedo of water, about 0.06), $u_2$ the wind speed at 2 m in m s⁻¹, $D$ in kPa and $\lambda$ in MJ kg⁻¹. Heat storage in a deep lake ($G$) shifts evaporation from spring to autumn but nearly cancels over a year.
+with $E$ in mm d⁻¹, $R_n$ in MJ m⁻² d⁻¹ (computed with the albedo of water, about 0.06), $u_2$ the wind speed at 2 m in m s⁻¹, $\delta e$ in kPa and $\lambda$ in MJ kg⁻¹. Heat storage in a deep lake ($G$) shifts evaporation from spring to autumn but nearly cancels over a year.
 
 ## 4.5 The Penman–Monteith equation
 
 Leaves are not wet surfaces. Vapor inside a leaf is saturated, but to reach the air it must pass through the stomata, which adds a second resistance in series with $r_a$. John Monteith (1965) treated the whole canopy as a single **big leaf** with a **surface (canopy) resistance** $r_s$ (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)). The vapor flux becomes $(\rho_a c_p / \gamma)\,[e_s(T_s) - e_a]/(r_a + r_s)$, while heat still leaves through $r_a$ alone. Repeating the three steps of Section 4.4 gives the **Penman–Monteith equation**:
 
-\begin{equation}
-\lambda E = \frac{\Delta\,(R_n - G) + \rho_a c_p\, D / r_a}{\Delta + \gamma\,\bigl(1 + r_s / r_a\bigr)} .
+\begin{equation*}
+\lambda E = \frac{\Delta\,(R_n - G) + \rho_a c_p\, \delta e / r_a}{\Delta + \gamma\,\bigl(1 + r_s / r_a\bigr)} .
 \tag{4.7}
-\end{equation}
+\end{equation*}
 
 With $r_s = 0$ it reduces to the Penman equation. The surface resistance depends on how many leaves there are and how open their stomata are. A rough estimate is $r_s \approx r_l / \text{LAI}_{\text{active}}$, where $r_l$ (about 100 s m⁻¹ for a well-watered leaf) is the resistance of a single leaf and $\text{LAI}_{\text{active}}$ is the area of sunlit leaves per unit ground area. Typical values of $r_s$ are 50–100 s m⁻¹ for well-watered crops, 100–200 s m⁻¹ for forests, and several hundred or more for plants under water stress.
 
@@ -203,9 +203,9 @@ rs = np.linspace(0, 400, 201)
 fig, ax = plt.subplots(figsize=(6.4, 4.0))
 for D, col in [(0.6, c3), (1.5, c1), (2.5, c2)]:
     ax.plot(rs, penman_monteith(Rn_G, T, D, r_a(0.12, 2.0), rs), color=col, lw=2.2,
-            label=f"grass, D = {D} kPa")
+            label=f"grass, $\\delta e$ = {D} kPa")
 ax.plot(rs, penman_monteith(Rn_G, T, 1.5, r_a(15.0, 2.0, z_m=20, z_h=20), rs), color=c1, lw=1.8,
-        ls="--", label="forest, D = 1.5 kPa")
+        ls="--", label="forest, $\\delta e$ = 1.5 kPa")
 ax.axvline(70, color=ink2, lw=0.8, ls=":")
 ax.text(74, 0.4, "$r_s$ = 70 s m⁻¹\n(reference grass)", color=ink2, fontsize=9)
 ax.set_xlabel("Surface resistance $r_s$ (s m⁻¹)"); ax.set_ylabel("$E$ (mm d⁻¹)")
@@ -224,10 +224,10 @@ glue("ra_forest", float(r_a(15.0, 2.0, z_m=20, z_h=20)), display=False)
 
 To make evapotranspiration estimates comparable worldwide, the Food and Agriculture Organization (Allen et al., 1998) defined a **reference crop**: a hypothetical grass, 0.12 m tall, with a surface resistance of 70 s m⁻¹ and an albedo of 0.23, actively growing and well watered. For this surface Equation (4.1) gives $r_a = 208/u_2$ s m⁻¹, and substituting the fixed values into the Penman–Monteith equation gives the **FAO-56 reference evapotranspiration**:
 
-\begin{equation}
+\begin{equation*}
 E_0 = \frac{0.408\,\Delta\,(R_n - G) + \gamma\,\dfrac{900}{T_a + 273}\,u_2\,(e_s - e_a)}{\Delta + \gamma\,(1 + 0.34\,u_2)} ,
 \tag{4.8}
-\end{equation}
+\end{equation*}
 
 with $E_0$ in mm d⁻¹, $R_n$ and $G$ in MJ m⁻² d⁻¹, $T_a$ the daily mean air temperature (°C), $u_2$ the wind speed at 2 m (m s⁻¹), and $e_s$, $e_a$, $\Delta$, $\gamma$ in kPa or kPa °C⁻¹. The factor 0.408 is $1/\lambda$, the term $1 + 0.34\,u_2$ is $1 + r_s/r_a = 1 + 70\,u_2/208$, and 900 collects the constants of the aerodynamic term. For daily steps $G \approx 0$. FAO-56 also recommends averaging the saturation vapor pressure at the daily maximum and minimum temperatures, $e_s = [e_s(T_{\max}) + e_s(T_{\min})]/2$, because $e_s$ is a convex function of temperature.
 
@@ -284,20 +284,20 @@ glue("season_E0", float(E0.sum()), display=False); glue("season_Ec", float(Ec.su
 
 ### Water stress
 
-When the soil dries, roots cannot extract water fast enough and the plants close their stomata. FAO-56 reduces the crop evapotranspiration by a **water stress coefficient** $K_s$:
+When the soil dries, roots cannot extract water fast enough and the plants close their stomata. FAO-56 reduces the crop evapotranspiration by a **water stress coefficient**, written $K_s$ in FAO-56 and $K_w$ in this book, which reserves $K_s$ for the saturated hydraulic conductivity of Chapter 5:
 
 $$
-E_{c,\text{adj}} = K_s\,K_c\,E_0 .
+E_{c,\text{adj}} = K_w\,K_c\,E_0 .
 $$
 
 The water that the root zone can hold between field capacity and the wilting point (Chapter 5) is the **total available water**, $\text{TAW} = 1000\,(\theta_{fc} - \theta_{wp})\,Z_r$ in mm, where $\theta$ is the volumetric water content and $Z_r$ the rooting depth in m. Plants can extract a fraction $p$ of it (typically 0.4–0.6) without stress; this is the **readily available water** $\text{RAW} = p\,\text{TAW}$. If $D_r$ is the root-zone depletion (the water deficit below field capacity), then
 
-\begin{equation}
-K_s = \begin{cases} 1 & D_r \le \text{RAW} \\[4pt] \dfrac{\text{TAW} - D_r}{(1 - p)\,\text{TAW}} & D_r > \text{RAW} \end{cases}
+\begin{equation*}
+K_w = \begin{cases} 1 & D_r \le \text{RAW} \\[4pt] \dfrac{\text{TAW} - D_r}{(1 - p)\,\text{TAW}} & D_r > \text{RAW} \end{cases}
 \tag{4.9}
-\end{equation}
+\end{equation*}
 
-so $K_s$ falls linearly from 1 to 0 as the soil dries from the readily available limit to the wilting point (Figure 4.3). The same idea, a reduction of evapotranspiration as soil water falls, appears in almost every hydrological model, including the bucket model of Chapter 1.
+so $K_w$ falls linearly from 1 to 0 as the soil dries from the readily available limit to the wilting point (Figure 4.3). The same idea, a reduction of evapotranspiration as soil water falls, appears in almost every hydrological model, including the bucket model of Chapter 1.
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -308,7 +308,7 @@ fig, ax = plt.subplots(figsize=(6.0, 3.4))
 ax.plot(Dr, Ks, color=c2, lw=2.4)
 ax.axvline(p_frac * TAW, color=ink2, lw=0.8, ls=":")
 ax.text(p_frac * TAW + 2, 0.2, "RAW = p · TAW", color=ink2, fontsize=9.5)
-ax.set_xlabel("Root-zone depletion $D_r$ (mm)"); ax.set_ylabel("$K_s$")
+ax.set_xlabel("Root-zone depletion $D_r$ (mm)"); ax.set_ylabel("$K_w$")
 ax.set_xlim(0, TAW); ax.set_ylim(0, 1.1)
 ax.set_xticks([0, 27, 54, 81, 108], ["0\n(field capacity)", "27", "54", "81", "108\n(wilting point)"])
 plt.show()
@@ -318,7 +318,7 @@ plt.show()
 
 ## 4.7 The Priestley–Taylor equation
 
-Over a large, wet region the air that flows over the surface has itself been moistened by it, and the vapor pressure deficit becomes small. In the limit $D \to 0$, the Penman equation keeps only its energy term. This **equilibrium evaporation** is
+Over a large, wet region the air that flows over the surface has itself been moistened by it, and the vapor pressure deficit becomes small. In the limit $\delta e \to 0$, the Penman equation keeps only its energy term. This **equilibrium evaporation** is
 
 $$
 E_{\text{eq}} = \frac{\Delta}{\Delta + \gamma}\,\frac{R_n - G}{\lambda} .
@@ -326,10 +326,10 @@ $$
 
 Priestley and Taylor (1972) analyzed measurements over oceans, lakes and well-watered land and found that evaporation was consistently larger than $E_{\text{eq}}$ by a nearly constant factor (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)):
 
-\begin{equation}
+\begin{equation*}
 E_{PT} = \alpha\,\frac{\Delta}{\Delta + \gamma}\,\frac{R_n - G}{\lambda}, \qquad \alpha \approx 1.26 .
 \tag{4.10}
-\end{equation}
+\end{equation*}
 
 The **Priestley–Taylor equation** needs only net radiation and temperature, which is a great advantage where humidity and wind data are poor or where they come from a climate model. Its price is that it ignores the drying power of the air. It underestimates evaporation in dry, windy climates, where $\alpha$ of 1.5–1.7 or more may be needed, and it overestimates for surfaces whose stomata restrict transpiration.
 
@@ -408,10 +408,10 @@ valid over many years when storage change and groundwater exchange are negligibl
 
 Two limits are obvious: $\bar{E}$ cannot exceed $\bar{P}$ (the **water limit**) or $\bar{E}_p$ (the **energy limit**). Mikhail Budyko observed that catchments around the world lie close to a single curve beneath these limits (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)). A one-parameter form of this curve, due to Fu (1981), is
 
-\begin{equation}
+\begin{equation*}
 \frac{\bar{E}}{\bar{P}} = 1 + \phi - \bigl(1 + \phi^{\,w}\bigr)^{1/w} ,
 \tag{4.11}
-\end{equation}
+\end{equation*}
 
 where $w > 1$ reflects catchment properties such as soil water storage capacity and vegetation; a larger $w$ means more evapotranspiration for the same climate. In humid catchments ($\phi < 1$) evapotranspiration is limited mainly by energy and $\bar{E}/\bar{E}_p$ is close to 1. In arid catchments ($\phi > 1$) it is limited by water, $\bar{E}/\bar{P}$ approaches 1 and almost no runoff is produced (Figure 4.5).
 
@@ -494,7 +494,7 @@ The two forms agree to within a few hundredths of a millimeter; the small differ
 ```{code-cell} python
 Kc, TAW, p_frac, Dr, E0_mid = 1.15, 108.0, 0.5, 70.0, 5.4
 Ks = 1.0 if Dr <= p_frac * TAW else (TAW - Dr) / ((1 - p_frac) * TAW)
-print(f"RAW = {p_frac * TAW:.0f} mm, Ks = {Ks:.2f}")
+print(f"RAW = {p_frac * TAW:.0f} mm, K_w = {Ks:.2f}")
 print(f"E_c = {Kc * E0_mid:.2f} mm/d unstressed, {Ks * Kc * E0_mid:.2f} mm/d with stress")
 ```
 
@@ -529,7 +529,7 @@ The catchment is humid ($\phi < 1$), yet its actual evapotranspiration is only a
 - **Using air temperature as the surface temperature** in a mass-transfer equation. The Penman approach exists precisely to avoid this.
 - **Mixing time steps.** Equation (4.8) is written for daily data with $R_n$ in MJ m⁻² d⁻¹. For hourly data the constants change (900 becomes 37) and $G$ cannot be neglected.
 - **Computing $e_s$ from the mean temperature.** Because $e_s(T)$ is convex, $e_s(\bar{T})$ underestimates the mean saturation vapor pressure and therefore the deficit. Average $e_s(T_{\max})$ and $e_s(T_{\min})$.
-- **Treating $E_0$ as actual evapotranspiration.** $E_0$ is a climatic demand for a reference grass. Actual evapotranspiration needs $K_c$, $K_s$ or a water balance.
+- **Treating $E_0$ as actual evapotranspiration.** $E_0$ is a climatic demand for a reference grass. Actual evapotranspiration needs $K_c$, $K_w$ or a water balance.
 - **Using a pan reading as lake evaporation.** Apply a pan coefficient.
 - **Applying $\alpha$ = 1.26 everywhere.** The Priestley–Taylor coefficient is for wet surfaces in humid air.
 
@@ -554,7 +554,7 @@ glue("q5_EP", (1180 - Q5) / 1180, display=False); glue("q5_fu", float(fu(780 / 1
 1. Above a wheat field, temperature decreases by 1.2 °C and vapor pressure by 0.15 kPa between two heights, and $R_n - G$ = 11 MJ m⁻² d⁻¹ at sea level. Find the Bowen ratio and the evapotranspiration. What does the large Bowen ratio suggest about the field?
 2. A lake at sea level has a mean net radiation of 12 MJ m⁻² d⁻¹ in a month with a mean air temperature of 20 °C, a vapor pressure deficit of 0.9 kPa and $u_2$ = 3.0 m s⁻¹. Use Equation (4.6) to find the evaporation rate and the total for a 31-day month.
 3. A station at 37.5° N and 120 m elevation records on 1 June (day 152): $T_{\max}$ = 28 °C, $T_{\min}$ = 18 °C, $e_a$ = 1.8 kPa, $R_s$ = 22 MJ m⁻² d⁻¹, $u_2$ = 2.5 m s⁻¹. Compute $E_0$.
-4. A crop with $K_c$ = 1.05 grows in a root zone with TAW = 120 mm and $p$ = 0.55. The depletion is 84 mm and $E_0$ = 4.8 mm d⁻¹. Find $K_s$ and the actual crop evapotranspiration.
+4. A crop with $K_c$ = 1.05 grows in a root zone with TAW = 120 mm and $p$ = 0.55. The depletion is 84 mm and $E_0$ = 4.8 mm d⁻¹. Find $K_w$ and the actual crop evapotranspiration.
 5. A 95 km² catchment receives 1180 mm of precipitation a year, its mean flow is 1.8 m³ s⁻¹, and its potential evapotranspiration is 780 mm a year. Find the mean actual evapotranspiration and $E/P$, and compare it with the prediction of Fu's equation with $w$ = 2.6.
 
 ```{admonition} Answers
@@ -562,7 +562,7 @@ glue("q5_EP", (1180 - Q5) / 1180, display=False); glue("q5_fu", float(fu(780 / 1
 1. $\beta$ = {glue:text}`q1_beta:.2f`; $E$ = {glue:text}`q1_E:.2f` mm d⁻¹. About a third of the available energy heats the air: the crop is probably short of water.
 2. {glue:text}`q2_E:.2f` mm d⁻¹, about {glue:text}`q2_mm:.0f` mm in the month.
 3. $E_0$ ≈ {glue:text}`q3_E0:.2f` mm d⁻¹.
-4. $K_s$ = {glue:text}`q4_Ks:.2f`; $E_{c,\text{adj}}$ = {glue:text}`q4_E:.2f` mm d⁻¹.
+4. $K_w$ = {glue:text}`q4_Ks:.2f`; $E_{c,\text{adj}}$ = {glue:text}`q4_E:.2f` mm d⁻¹.
 5. $Q$ = {glue:text}`q5_Q:.0f` mm, $E$ = {glue:text}`q5_E:.0f` mm, $E/P$ = {glue:text}`q5_EP:.2f`; Fu's equation gives {glue:text}`q5_fu:.0f` mm.
 ```
 

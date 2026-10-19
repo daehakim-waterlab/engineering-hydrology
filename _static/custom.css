@@ -11,6 +11,8 @@
 
 /* Phones: keep table columns apart. Wide tables and equations scroll sideways inside their own box. */
 @media (max-width: 576px) {
+  /* Heading permalink icons are hover-only; on phones they can push a long heading past the edge. */
+  .bd-article .headerlink { display: none !important; }
   .bd-article table { font-size: 0.85em; }
   .bd-article table th,
   .bd-article table td,
@@ -20,3 +22,7 @@
   .bd-article div.cell_output th,
   .bd-article div.cell_output td { padding: 0.35em 0.3em; }
 }
+
+/* Displayed equations wider than the screen scroll sideways inside their own box instead of being cut off. */
+.bd-article div.math,
+.bd-article mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
