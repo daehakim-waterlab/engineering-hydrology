@@ -53,6 +53,7 @@ sphinx:
   recursive_update: true   # merge the options below into the ones generated above
   config:
     html_last_updated_fmt: "%Y-%m-%d"
+    templates_path: [_templates]
     # Parse Markdown produced by code cells (tables) as MyST, so pipe tables and $math$ render.
     nb_render_markdown_format: myst
     # PDF: chapter, section and table numbers are written by hand in the titles and captions
@@ -65,6 +66,8 @@ sphinx:
         \makeatother
     html_theme_options:
       footer_content_items: [extra-footer.html, last-updated.html]
+      # "Lab homepage" link in the header, next to the buttons (as in the water-history book).
+      article_header_end: [lab-home.html, article-header-buttons.html]
       icon_links:
         - name: Download the book as PDF
           url: https://hydroclimatol.com/engineering-hydrology/engineering-hydrology.pdf

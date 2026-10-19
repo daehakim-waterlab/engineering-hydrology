@@ -12,7 +12,8 @@ Built with [Jupyter Book](https://jupyterbook.org/) 1.x, with the same setup as 
 - `_toc.yml`: four parts and thirteen chapters. Chapter, section, figure and table numbers are written by hand in the chapter files.
 - `intro.md`: the front page, with the notation table.
 - `chapters/chNN_*.md`: one MyST Markdown notebook per chapter. Python code goes in `{code-cell} python` blocks and runs on every build, so figures, tables and numbers always come from the code. Tag a cell `hide-input` to fold its code under the figure, `remove-input` to show only its output (e.g. a table), or `remove-cell` to run it without showing it (plot style; exercise answers glued into the text with `{glue:text}`).
-- `_static/custom.css`: table styling for phones and dark mode.
+- `_static/custom.css`: table and equation styling for phones and dark mode, and the header link.
+- `_templates/lab-home.html`: the "Lab homepage" link in the page header (a house icon on phones), set by `article_header_end` in `_config.yml`.
 
 ## Writing rules
 
