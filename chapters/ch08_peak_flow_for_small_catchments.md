@@ -51,11 +51,12 @@ $$
 Q_p = C\, i\, A .
 $$
 
-With $i$ in mm h⁻¹ and $A$ in km², the unit conversion of Chapter 1 (Equation {eq}`eq-mmh-to-cms` there) gives the working form
+With $i$ in mm h⁻¹ and $A$ in km², the unit conversion of Chapter 1 (Equation (1.2) there) gives the working form
 
-$$
+\begin{equation}
 Q_p = \frac{C\, i\, A}{3.6} = 0.278\, C\, i\, A \qquad (Q_p \text{ in m}^3\,\text{s}^{-1}).
-$$ (eq-rational)
+\tag{8.1}
+\end{equation}
 
 This is the **rational method**. Its basic idea, that the peak is reached when the whole catchment contributes, goes back to Thomas Mulvaney in Ireland in 1851, and the formula became standard practice for city drainage through the work of Emil Kuichling in the United States (1889) and David Lloyd-Davies in Britain (1906) (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#floods-from-formulas-to-the-unit-hydrograph)). It remains the most widely used method for the design of storm sewers, culverts and small drainage structures.
 
@@ -120,26 +121,29 @@ Most empirical formulas have the form $t_c \propto L^a S_0^{-b}$, where $L$ is a
 
 **Kirpich (1940)**, from small agricultural catchments in Tennessee with well-defined channels:
 
-$$
+\begin{equation}
 t_c = 0.0195\, L^{0.77}\, S_0^{-0.385} \qquad (t_c \text{ in min},\ L \text{ in m}),
-$$ (eq-kirpich)
+\tag{8.2}
+\end{equation}
 
 where $L$ is the length of the main channel from the outlet to the divide and $S_0$ the average slope along it (the elevation difference divided by $L$). The original form is $t_c = 0.0078\,L^{0.77}S_0^{-0.385}$ with $L$ in feet. Kirpich is often multiplied by 2 for overland flow on grass and by 0.4 for concrete or asphalt surfaces.
 
 **Kerby (1959)**, for overland flow over short distances (less than about 300 m):
 
-$$
+\begin{equation}
 t_c = 1.44\left(\frac{L\, N}{S_0^{0.5}}\right)^{0.467} \qquad (t_c \text{ in min},\ L \text{ in m}),
-$$ (eq-kerby)
+\tag{8.3}
+\end{equation}
 
 where $N$ is a retardance coefficient (about 0.02 for smooth pavement, 0.1–0.3 for bare or sparsely grassed soil, 0.4 for average grass and 0.8 for dense grass or forest litter). The original constant is 0.83 with $L$ in feet.
 
 **NRCS lag equation**, developed for agricultural catchments and widely applied to rural areas:
 
-$$
+\begin{equation}
 t_L = \frac{(3.28\,L)^{0.8}\,\left(\dfrac{1000}{\text{CN}} - 9\right)^{0.7}}{1900\, Y^{0.5}} \quad (t_L \text{ in h},\ L \text{ in m}),
 \qquad t_c = \frac{t_L}{0.6},
-$$ (eq-nrcs-lag)
+\tag{8.4}
+\end{equation}
 
 where $L$ is the hydraulic length (m), CN the curve number (Chapter 7) and $Y$ the average land slope of the catchment in percent. The term $1000/\text{CN} - 9$ is $S_{\max} + 1$ with $S_{\max}$ in inches, which is kept because it is dimensionless here; only $L$ needs converting (1 m = 3.28 ft).
 
@@ -173,9 +177,10 @@ $$
 
 - **Sheet flow** over the first tens of meters, as a thin film. The NRCS kinematic-wave approximation, converted to SI, is
 
-$$
+\begin{equation}
 T_{\text{sheet}} = \frac{0.0913\,(n\,L)^{0.8}}{P_2^{0.5}\,S_0^{0.4}} \qquad (T \text{ in h},\ L \text{ in m},\ P_2 \text{ in mm}),
-$$ (eq-sheet)
+\tag{8.5}
+\end{equation}
 
 where $n$ is a Manning roughness for sheet flow (0.011 for smooth pavement, 0.15 for short grass, 0.24 for dense grass, 0.4–0.8 for woods), $P_2$ is the 2-year, 24-hour rainfall and $L$ is limited to about 30 m in current NRCS guidance.
 
@@ -205,11 +210,12 @@ A storm sewer system collects runoff from many small **subcatchments**, each dra
 2. **Intensity.** Read $i$ from the IDF curve for the design return period at that time of concentration.
 3. **Peak discharge.** $Q = 0.278\, i \sum C_j A_j$, where the sum covers all subcatchments draining to the pipe. Note that the intensity decreases downstream (longer $t_c$) while $\sum CA$ increases.
 4. **Pipe size.** For a circular pipe flowing full, the Manning equation gives
-$$
+\begin{equation}
 Q = \frac{1}{n}\,\frac{\pi D^2}{4}\left(\frac{D}{4}\right)^{2/3} S_0^{1/2}
 \quad\Longrightarrow\quad
 D = \left(\frac{3.208\, n\, Q}{S_0^{1/2}}\right)^{3/8},
-$$ (eq-pipe-D)
+\tag{8.6}
+\end{equation}
 where $S_0$ is the pipe slope. The next larger commercial diameter is chosen.
 5. **Velocity check.** The full-flow velocity should exceed a self-cleansing minimum (typically about 0.6–0.8 m s⁻¹, to keep sediment moving) and stay below a maximum (about 3 m s⁻¹, to limit abrasion).
 6. **Travel time.** The travel time in the pipe, $L/V$, is added to the time of concentration for the next pipe downstream.

@@ -53,15 +53,17 @@ The volume of the flood is not changed, only redistributed in time (ignoring los
 
 **Hydrologic routing** treats the reservoir or reach as a lumped control volume and uses only the continuity equation plus an assumed storage relation. **Hydraulic routing** solves the equations of unsteady open-channel flow along the river. Both start from conservation of mass for the control volume:
 
-$$
+\begin{equation}
 I(t) - O(t) = \frac{dS}{dt},
-$$ (eq-routing-continuity)
+\tag{10.1}
+\end{equation}
 
 where $I$ is the inflow, $O$ the outflow and $S$ the storage. Over a time step $\Delta t$, with the flows varying linearly within the step,
 
-$$
+\begin{equation}
 \frac{I_1 + I_2}{2} - \frac{O_1 + O_2}{2} = \frac{S_2 - S_1}{\Delta t},
-$$ (eq-routing-discrete)
+\tag{10.2}
+\end{equation}
 
 where subscripts 1 and 2 denote the beginning and end of the step. At each step $I_1$, $I_2$, $O_1$ and $S_1$ are known, and $O_2$ and $S_2$ are unknown. One equation is not enough; the second comes from a **storage relation** linking $S$ to $O$ (and possibly $I$). The methods in this chapter differ only in that relation.
 
@@ -79,11 +81,12 @@ where $C_w$ is a discharge coefficient (about 2.0–2.2 m¹ᐟ² s⁻¹ for an o
 
 ### The storage-indication method
 
-Rearrange Equation {eq}`eq-routing-discrete` so that all unknowns are on the left:
+Rearrange Equation (10.2) so that all unknowns are on the left:
 
-$$
+\begin{equation}
 \frac{2 S_2}{\Delta t} + O_2 = (I_1 + I_2) + \left(\frac{2 S_1}{\Delta t} - O_1\right).
-$$ (eq-storage-indication)
+\tag{10.3}
+\end{equation}
 
 Everything on the right is known. From the storage–outflow relation, tabulate the function $2S/\Delta t + O$ against $O$ once. At each step, compute the right side, read $O_2$ from the table by interpolation, compute $2S_2/\Delta t - O_2 = (2S_2/\Delta t + O_2) - 2O_2$ for the next step, and move on. This is the **storage-indication** (or modified Puls) method. The time step should be short enough to describe the rising limb well, typically one fifth of the time to peak of the inflow or less.
 
@@ -154,27 +157,30 @@ Because outflow depends only on the level, and the level is highest when storage
 
 In a river reach the water surface is not level. On the rising limb of a flood, the upstream end is higher than it would be in steady flow and the reach holds extra water in a **wedge**; on the falling limb, the wedge is negative. Storage therefore depends on both inflow and outflow. G. T. McCarthy, working on flood control in the Muskingum River basin in Ohio in the 1930s, proposed a linear combination:
 
-$$
+\begin{equation}
 S = K\,\bigl[x\,I + (1 - x)\,O\bigr],
-$$ (eq-muskingum-storage)
+\tag{10.4}
+\end{equation}
 
 where $K$ (h) is a storage constant, close to the travel time of the flood wave through the reach, and $x$ (dimensionless, 0 to 0.5) is a weighting factor. With $x = 0$ storage depends on outflow only, and the reach acts as a linear reservoir; with $x = 0.5$, inflow and outflow weigh equally and the flood is translated without attenuation. Natural rivers usually have $x$ between 0 and 0.3. (The method was developed in the 1930s; its history is part of the story of flood methods told in [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#floods-from-formulas-to-the-unit-hydrograph).)
 
 ### The routing equation
 
-Substitute Equation {eq}`eq-muskingum-storage` at the start and end of the step into Equation {eq}`eq-routing-discrete` and solve for $O_2$:
+Substitute Equation (10.4) at the start and end of the step into Equation (10.2) and solve for $O_2$:
 
-$$
+\begin{equation}
 O_2 = C_0\, I_2 + C_1\, I_1 + C_2\, O_1 ,
-$$ (eq-muskingum)
+\tag{10.5}
+\end{equation}
 
 with
 
-$$
+\begin{equation}
 C_0 = \frac{\Delta t - 2Kx}{2K(1 - x) + \Delta t}, \qquad
 C_1 = \frac{\Delta t + 2Kx}{2K(1 - x) + \Delta t}, \qquad
 C_2 = \frac{2K(1 - x) - \Delta t}{2K(1 - x) + \Delta t}.
-$$ (eq-muskingum-coef)
+\tag{10.6}
+\end{equation}
 
 Adding the three numerators gives the denominator, so
 
@@ -199,21 +205,22 @@ def muskingum(I, K, x, dt, O0=None):
 
 ### Estimating $K$ and $x$
 
-Where inflow and outflow hydrographs have been measured for the same flood, storage is found by accumulating Equation {eq}`eq-routing-continuity`: $S(t) = \int_0^t (I - O)\,dt$. For trial values of $x$, plot $S$ against the weighted flow $xI + (1 - x)O$. The rising and falling limbs form a loop; the value of $x$ that collapses the loop into the narrowest band is chosen, and $K$ is the slope of the line through it. Example 10.3 automates this by choosing the $x$ that maximizes the linear correlation.
+Where inflow and outflow hydrographs have been measured for the same flood, storage is found by accumulating Equation (10.1): $S(t) = \int_0^t (I - O)\,dt$. For trial values of $x$, plot $S$ against the weighted flow $xI + (1 - x)O$. The rising and falling limbs form a loop; the value of $x$ that collapses the loop into the narrowest band is chosen, and $K$ is the slope of the line through it. Example 10.3 automates this by choosing the $x$ that maximizes the linear correlation.
 
 ### Muskingum–Cunge
 
 Cunge (1969) showed that the Muskingum equation, with a particular choice of parameters, is a numerical solution of the diffusion wave equation (Section 10.5). For a reach of length $\Delta x$ with flood-wave celerity $c$, bed slope $S_0$, width $B$ and reference discharge $Q_0$,
 
-$$
+\begin{equation}
 K = \frac{\Delta x}{c}, \qquad x = \frac{1}{2}\left(1 - \frac{Q_0}{B\,S_0\,c\,\Delta x}\right).
-$$ (eq-muskingum-cunge)
+\tag{10.7}
+\end{equation}
 
 The parameters now come from channel properties instead of from a past flood, which allows routing on ungauged rivers and through reaches whose geometry is changed by engineering works.
 
 ## 10.4 Linear reservoir cascades
 
-A river reach can also be represented by a series of $n$ linear reservoirs, each with storage $S = kQ$, exactly as the Nash cascade represents a catchment (Chapter 9). For a time step in which the inflow $\bar{I}$ is taken as constant, the exact solution of Equation {eq}`eq-lr-ode` (Chapter 9) for one reservoir is
+A river reach can also be represented by a series of $n$ linear reservoirs, each with storage $S = kQ$, exactly as the Nash cascade represents a catchment (Chapter 9). For a time step in which the inflow $\bar{I}$ is taken as constant, the exact solution of Equation (9.2) (Chapter 9) for one reservoir is
 
 $$
 O_2 = O_1\, e^{-\Delta t/k} + \bar{I}\,\bigl(1 - e^{-\Delta t/k}\bigr),
@@ -258,16 +265,18 @@ glue("mk_C0", float(C[0]), display=False)
 
 The physics of a flood wave in a river is described by the one-dimensional equations of unsteady open-channel flow, published by Adhémar Barré de Saint-Venant in 1871 (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/industrial-age-engineering-hydraulics/#pipes-channels-and-groundwater-empirical-hydraulics-matures)). For a channel with cross-sectional area $A$, discharge $Q$, depth $y$, bed slope $S_0$ and friction slope $S_f$:
 
-$$
+\begin{equation}
 \frac{\partial A}{\partial t} + \frac{\partial Q}{\partial x} = q_L ,
-$$ (eq-sv-continuity)
+\tag{10.8}
+\end{equation}
 
-$$
+\begin{equation}
 \underbrace{\frac{1}{A}\frac{\partial Q}{\partial t}}_{\text{local acceleration}}
 + \underbrace{\frac{1}{A}\frac{\partial}{\partial x}\!\left(\frac{Q^2}{A}\right)}_{\text{convective acceleration}}
 + \underbrace{g\,\frac{\partial y}{\partial x}}_{\text{pressure}}
 - \underbrace{g\,(S_0 - S_f)}_{\text{gravity and friction}} = 0 ,
-$$ (eq-sv-momentum)
+\tag{10.9}
+\end{equation}
 
 where $q_L$ is the lateral inflow per unit length. The first is conservation of mass; the second, conservation of momentum. Steady, gradually varied flow (Chapter 6 of the [Hydraulics](https://daehakim-waterlab.github.io/hydraulics/chapters/ch06_flow_in_open_channels.html#gradually-varied-flow) book) is the special case with no time derivatives. Solving the full equations, the **dynamic wave**, needs cross-section data along the river, boundary conditions and a numerical scheme, and is done with programs such as HEC-RAS.
 
@@ -275,19 +284,21 @@ where $q_L$ is the lateral inflow per unit length. The first is conservation of 
 
 In most natural floods the acceleration terms are much smaller than the gravity and friction terms. Dropping terms one by one gives a hierarchy of approximations:
 
-- **Kinematic wave**: keep only $S_f = S_0$. The flow is uniform at every instant, and discharge is a single-valued function of area, $Q = \alpha A^{m}$ (from the Manning equation, $m = 5/3$ for a wide channel). Substituting into Equation {eq}`eq-sv-continuity` gives
+- **Kinematic wave**: keep only $S_f = S_0$. The flow is uniform at every instant, and discharge is a single-valued function of area, $Q = \alpha A^{m}$ (from the Manning equation, $m = 5/3$ for a wide channel). Substituting into Equation (10.8) gives
 
-$$
+\begin{equation}
 \frac{\partial Q}{\partial t} + c\,\frac{\partial Q}{\partial x} = c\,q_L, \qquad c = \frac{dQ}{dA} = m\,V ,
-$$ (eq-kinematic)
+\tag{10.10}
+\end{equation}
 
   a wave that travels at the **kinematic celerity** $c$ (5/3 of the mean velocity in a wide channel) **without changing shape**: pure translation, no attenuation.
 
 - **Diffusion wave**: also keep the pressure term. The result is an advection–diffusion equation,
 
-$$
+\begin{equation}
 \frac{\partial Q}{\partial t} + c\,\frac{\partial Q}{\partial x} = D_h\,\frac{\partial^2 Q}{\partial x^2}, \qquad D_h = \frac{Q}{2\,B\,S_0},
-$$ (eq-diffusion-wave)
+\tag{10.11}
+\end{equation}
 
   in which the **hydraulic diffusivity** $D_h$ spreads and flattens the wave as it travels. Attenuation is larger for wide, flat rivers carrying large flows.
 
@@ -295,11 +306,12 @@ $$ (eq-diffusion-wave)
 
 For constant $c$ and $D_h$ the diffusion wave has an exact solution (due to Hayami): the response at distance $L$ to an instantaneous unit input is
 
-$$
+\begin{equation}
 h(t) = \frac{L}{\sqrt{4\pi D_h t^3}}\exp\!\left[-\frac{(L - c\,t)^2}{4 D_h t}\right],
-$$ (eq-hayami)
+\tag{10.12}
+\end{equation}
 
-which can be convolved with an inflow hydrograph exactly like a unit hydrograph. Figure 10.3 compares the kinematic wave, the diffusion wave and Muskingum–Cunge for a long reach. Muskingum–Cunge, whose parameters come from Equation {eq}`eq-muskingum-cunge`, follows the diffusion wave closely; the kinematic wave only shifts the inflow. This explains what the hydrologic methods represent: $K$ is the travel time of the kinematic wave, and $x$ controls the attenuation that the diffusion term produces.
+which can be convolved with an inflow hydrograph exactly like a unit hydrograph. Figure 10.3 compares the kinematic wave, the diffusion wave and Muskingum–Cunge for a long reach. Muskingum–Cunge, whose parameters come from Equation (10.7), follows the diffusion wave closely; the kinematic wave only shifts the inflow. This explains what the hydrologic methods represent: $K$ is the travel time of the kinematic wave, and $x$ controls the attenuation that the diffusion term produces.
 
 ```{code-cell} python
 :tags: [hide-input]

@@ -99,9 +99,10 @@ $$
 
 where $C$ is the **runoff coefficient**. It is the event runoff ratio of Chapter 6 used as a parameter. It is appropriate for small, highly impervious catchments, where losses are small and nearly proportional to rainfall, and it is the loss model of the rational method (Chapter 8). Typical values range from 0.7–0.95 for roofs and pavement, through 0.3–0.6 for suburban areas, to 0.05–0.35 for lawns, parks and forests, increasing with slope and with soil fineness. A catchment with several land uses has a **composite** coefficient equal to the area-weighted average:
 
-$$
+\begin{equation}
 C = \frac{\sum_j C_j A_j}{\sum_j A_j} .
-$$ (eq-composite-C)
+\tag{7.1}
+\end{equation}
 
 The weakness of the runoff coefficient is that real losses are not proportional to rainfall: a small storm on dry soil may produce almost no runoff, while a large storm on wet soil produces much more than the same fraction. For larger and less impervious catchments, $C$ must therefore be chosen for the storm size and the antecedent wetness of interest.
 
@@ -109,11 +110,12 @@ The weakness of the runoff coefficient is that real losses are not proportional 
 
 The **φ-index** is the constant loss rate (mm h⁻¹) that, subtracted from the rainfall hyetograph, leaves an excess rainfall equal to the observed direct runoff:
 
-$$
+\begin{equation}
 P_e = \sum_k \max\bigl(i_k - \phi,\ 0\bigr)\,\Delta t .
-$$ (eq-phi)
+\tag{7.2}
+\end{equation}
 
-Intervals with rainfall intensity below $\phi$ contribute no excess, so $\phi$ cannot be computed in one step: assume which intervals produce excess, solve for $\phi$, and check that the assumption holds. A simple and safe way is to note that the right side of Equation {eq}`eq-phi` decreases steadily as $\phi$ increases, so the root can be found by bisection (Example 7.2).
+Intervals with rainfall intensity below $\phi$ contribute no excess, so $\phi$ cannot be computed in one step: assume which intervals produce excess, solve for $\phi$, and check that the assumption holds. A simple and safe way is to note that the right side of Equation (7.2) decreases steadily as $\phi$ increases, so the root can be found by bisection (Example 7.2).
 
 The φ-index is the infiltration capacity averaged over the storm. It ignores the initial loss and the decline of infiltration capacity during the storm, so it puts too little excess at the beginning and too much at the end. A common refinement, the **initial loss–continuing loss** model of Figure 7.1, removes a fixed depth first and then a constant rate.
 
@@ -129,9 +131,10 @@ $$
 
 where $F = P - I_a - P_e$ is the water retained after runoff begins and $S_{\max}$ is the **potential maximum retention**, the most water the catchment could retain once runoff starts. Substituting $F$ and solving for $P_e$:
 
-$$
+\begin{equation}
 P_e = \begin{cases}\dfrac{(P - I_a)^2}{P - I_a + S_{\max}} & P > I_a \\[8pt] 0 & P \le I_a\end{cases}
-$$ (eq-cn-runoff)
+\tag{7.3}
+\end{equation}
 
 From data on small catchments the SCS took $I_a = 0.2\,S_{\max}$, so that
 
@@ -145,9 +148,10 @@ As $P$ grows, $P_e/P \to 1$ and the retention approaches $S_{\max}$: the catchme
 
 To make $S_{\max}$ easier to tabulate, it is expressed through a dimensionless **curve number** CN between 0 and 100. The original definition in inches is $S_{\max} = 1000/\text{CN} - 10$. In millimeters (1 in = 25.4 mm):
 
-$$
+\begin{equation}
 S_{\max} = \frac{25400}{\text{CN}} - 254 \qquad (\text{mm}).
-$$ (eq-cn-S)
+\tag{7.4}
+\end{equation}
 
 CN = 100 means no retention (an impervious or water surface), and lower values mean more retention: CN = 50 gives $S_{\max}$ = 254 mm. The code below checks that the SI form gives exactly the same runoff as the original equation in inches.
 
@@ -196,15 +200,16 @@ CN depends on three things.
 2. **Land cover and treatment.** Impervious surfaces, row crops, pasture, forest, and their condition (for example good or poor grass cover).
 3. **Antecedent moisture condition (AMC).** The same catchment produces more runoff when wet.
 
-Tables of CN for combinations of soil group and land cover, for average antecedent conditions (AMC II), are given in the NRCS National Engineering Handbook (Part 630, Chapter 9) and in national design guidelines, including Korea's. Values range from about 30 for good forest on group A soils to 98 for pavement. For catchments with several land uses, it is more accurate to compute the runoff for each land use and add the volumes than to average the curve numbers first, because Equation {eq}`eq-cn-runoff` is nonlinear (Example 7.3).
+Tables of CN for combinations of soil group and land cover, for average antecedent conditions (AMC II), are given in the NRCS National Engineering Handbook (Part 630, Chapter 9) and in national design guidelines, including Korea's. Values range from about 30 for good forest on group A soils to 98 for pavement. For catchments with several land uses, it is more accurate to compute the runoff for each land use and add the volumes than to average the curve numbers first, because Equation (7.3) is nonlinear (Example 7.3).
 
 **Antecedent moisture.** In the traditional procedure, the 5-day rainfall before the storm determines the antecedent moisture class. Converted from the original thresholds in inches, AMC I (dry) applies when the 5-day total is below 13 mm in the dormant season or 36 mm in the growing season, and AMC III (wet) when it exceeds 28 mm or 53 mm respectively; AMC II lies between. Curve numbers for AMC II are converted to the other classes with the widely used approximations
 
-$$
+\begin{equation}
 \text{CN}_{\text{I}} = \frac{4.2\,\text{CN}_{\text{II}}}{10 - 0.058\,\text{CN}_{\text{II}}},
 \qquad
 \text{CN}_{\text{III}} = \frac{23\,\text{CN}_{\text{II}}}{10 + 0.13\,\text{CN}_{\text{II}}} .
-$$ (eq-amc)
+\tag{7.5}
+\end{equation}
 
 ```{code-cell} python
 thresholds_in = {"dormant": (0.5, 1.1), "growing": (1.4, 2.1)}     # AMC I upper / AMC III lower, inches
@@ -220,7 +225,7 @@ NRCS guidance has since moved away from tying AMC to the 5-day rainfall, because
 
 ### Excess rainfall hyetograph
 
-Equation {eq}`eq-cn-runoff` gives the storm total. To distribute the excess in time, apply it to the **cumulative** rainfall at the end of each interval and take differences:
+Equation (7.3) gives the storm total. To distribute the excess in time, apply it to the **cumulative** rainfall at the end of each interval and take differences:
 
 $$
 P_{e,k} = P_e\!\left(\sum_{j \le k} P_j\right) - P_e\!\left(\sum_{j \le k-1} P_j\right).

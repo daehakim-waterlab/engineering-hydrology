@@ -54,9 +54,10 @@ $$
 
 and its **return period** (recurrence interval) is
 
-$$
+\begin{equation}
 T = \frac{1}{p} .
-$$ (eq-return-period)
+\tag{11.1}
+\end{equation}
 
 The **non-exceedance probability** is $F = 1 - p = 1 - 1/T$. A "100-year rainfall" is a depth that has a 1% chance of being equaled or exceeded in any year.
 
@@ -66,18 +67,20 @@ The return period is an **average**: over a very long period, the years in which
 
 A structure is in service for many years, during which the design event may be exceeded more than once, or not at all. If annual maxima are independent and the climate does not change, the probability that $x_T$ is **not** exceeded in any of $n$ years is $(1 - 1/T)^n$. The probability of at least one exceedance, the **risk** (or hydrological risk), is therefore
 
-$$
+\begin{equation}
 R = 1 - \left(1 - \frac{1}{T}\right)^{n}.
-$$ (eq-risk)
+\tag{11.2}
+\end{equation}
 
 Two consequences are worth remembering:
 
 - if $n = T$, then $R \approx 1 - e^{-1} = 0.63$: an event with a $T$-year return period has a **63%** chance of occurring within $T$ years;
 - to keep the risk to $R$ over $n$ years, the return period must be
 
-$$
+\begin{equation}
 T = \frac{1}{1 - (1 - R)^{1/n}} ,
-$$ (eq-T-from-risk)
+\tag{11.3}
+\end{equation}
 
   much longer than the design life. A 10% risk over 50 years needs $T \approx 475$ years.
 
@@ -96,7 +99,7 @@ plt.show()
 
 *Figure 11.1. Probability that the $T$-year event is equaled or exceeded at least once during a design life of $n$ years.*
 
-The code below checks Equation {eq}`eq-risk` by simulation: 100,000 imaginary 50-year design lives, each year with a 1% chance of a 100-year event.
+The code below checks Equation (11.2) by simulation: 100,000 imaginary 50-year design lives, each year with a 1% chance of a 100-year event.
 
 ```{code-cell} python
 rng = np.random.default_rng(2024)
@@ -113,11 +116,12 @@ For each rainfall duration $D$ (10 minutes, 1 hour, 24 hours, ...), the annual m
 
 For computation, IDF curves are fitted with simple formulas. Common forms, with $i$ in mm h⁻¹ and $D$ in minutes, are
 
-$$
+\begin{equation}
 i = \frac{a}{D + b} \ \ \text{(Talbot)}, \qquad
 i = \frac{a}{D^{\,c}} \ \ \text{(Sherman)}, \qquad
 i = \frac{a}{(D + b)^{c}} ,
-$$ (eq-idf-forms)
+\tag{11.4}
+\end{equation}
 
 where $a$, $b$ and $c$ are fitted separately for each return period, or $a$ is made a function of $T$. National agencies publish IDF curves or formulas for their stations, sometimes as maps for ungauged areas. This book uses the illustrative curve of Chapter 8,
 
@@ -160,9 +164,10 @@ $$
 
 ARF decreases as the area grows and increases with duration: short, intense bursts are small convective cells, while long-duration rain comes from large weather systems. A convenient fit to the classical US Weather Bureau curves (Leclerc and Schaake, 1972), converted to SI, is
 
-$$
+\begin{equation}
 \text{ARF} = 1 - e^{-1.1\,D_h^{1/4}} + e^{-1.1\,D_h^{1/4} - 0.00386\,A},
-$$ (eq-arf)
+\tag{11.5}
+\end{equation}
 
 with $D_h$ the duration in hours and $A$ the area in km² (the original uses $0.01\,A$ with $A$ in mi²). Many countries have derived their own ARF curves from dense gauge networks, and those should be used where available.
 
@@ -274,9 +279,10 @@ $$
 
 is estimated from the surface dew point by assuming a saturated, pseudo-adiabatic atmosphere (Chapter 2). The storm depth is multiplied by the **moisture maximization ratio**
 
-$$
+\begin{equation}
 P_{\max} = P_{\text{storm}} \times \frac{W_{\max}}{W_{\text{storm}}},
-$$ (eq-moisture-max)
+\tag{11.6}
+\end{equation}
 
 where $W_{\text{storm}}$ is the precipitable water of the inflowing air during the storm and $W_{\max}$ the maximum for that place and season, both found from persisting dew points. Storms are then **transposed** to the catchment from similar regions, and an **envelope** is drawn over the maximized DAD curves of all storms.
 
@@ -355,7 +361,7 @@ rel = form(D_tab, a, b, c) / i_tab - 1
 print(f"a = {a:.0f}, b = {b:.1f} min, c = {c:.3f}; largest relative error {np.abs(rel).max() * 100:.1f}%")
 ```
 
-**Example 11.4 — Areal reduction.** The 50-year 3-hour point rainfall for a 250 km² catchment comes from the IDF curve. Find the ARF and the areal design depth, and check the SI form of Equation {eq}`eq-arf` against the original.
+**Example 11.4 — Areal reduction.** The 50-year 3-hour point rainfall for a 250 km² catchment comes from the IDF curve. Find the ARF and the areal design depth, and check the SI form of Equation (11.5) against the original.
 
 ```{code-cell} python
 Dh, A_km2 = 3.0, 250.0

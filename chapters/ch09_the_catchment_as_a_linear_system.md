@@ -57,39 +57,44 @@ A real catchment is neither exactly linear nor exactly time-invariant. Flow velo
 
 The simplest linear system is a reservoir whose outflow is proportional to its storage:
 
-$$
+\begin{equation}
 S = k\,Q ,
-$$ (eq-linear-reservoir)
+\tag{9.1}
+\end{equation}
 
 where $k$ is the **storage constant** (h). Combined with the water balance of Chapter 1, $dS/dt = i - Q$, this gives a first-order differential equation:
 
-$$
+\begin{equation}
 k\,\frac{dQ}{dt} + Q = i(t).
-$$ (eq-lr-ode)
+\tag{9.2}
+\end{equation}
 
 Its responses to three standard inputs are the building blocks of this chapter. All inputs are expressed as a depth rate over the catchment, so $Q$ here is also a depth rate (mm h⁻¹); multiplying by $A/3.6$ converts it to m³ s⁻¹ (Chapter 1).
 
 **Impulse response.** An input of 1 mm delivered instantaneously at $t = 0$ fills the reservoir at once, $S(0) = 1$ mm, and it then drains with $dQ/dt = -Q/k$:
 
-$$
+\begin{equation}
 u(t) = \frac{1}{k}\,e^{-t/k}.
-$$ (eq-iuh-lr)
+\tag{9.3}
+\end{equation}
 
 This response to a unit impulse is the **instantaneous unit hydrograph** (IUH) of the reservoir. Its area is 1, as it must be: all of the 1 mm eventually flows out.
 
 **Step response.** A steady input of 1 mm h⁻¹ starting at $t = 0$ gives
 
-$$
+\begin{equation}
 g(t) = 1 - e^{-t/k},
-$$ (eq-step-lr)
+\tag{9.4}
+\end{equation}
 
 which rises towards the equilibrium $Q = i$. The step response is the integral of the impulse response, $g(t) = \int_0^t u(\tau)\,d\tau$.
 
 **Pulse response.** An input of 1 mm spread evenly over a duration $D$ (a rate of $1/D$ mm h⁻¹) is a step that starts at $0$ minus a step that starts at $D$, each scaled by $1/D$:
 
-$$
+\begin{equation}
 h_D(t) = \frac{1}{D}\bigl[g(t) - g(t - D)\bigr], \qquad g(t) = 0 \text{ for } t < 0 .
-$$ (eq-pulse)
+\tag{9.5}
+\end{equation}
 
 This is the **D-hour unit hydrograph** of the linear reservoir. These three ideas, the impulse, the step and the pulse, apply to any linear system, not just the reservoir.
 
@@ -126,11 +131,12 @@ The **unit hydrograph** (UH) of duration $D$ is the hydrograph of direct runoff 
 
 Because its input is a known volume, a unit hydrograph has a fixed volume:
 
-$$
+\begin{equation}
 \int_0^\infty U(t)\,dt = A \times 1\ \text{mm}
 \quad\Longleftrightarrow\quad
 \sum_n U_n\,\Delta t \times 3600 = 1000\,A \quad (\text{m}^3,\ A \text{ in km}^2,\ \Delta t \text{ in h}).
-$$ (eq-uh-volume)
+\tag{9.6}
+\end{equation}
 
 This is the most important check on any unit hydrograph.
 
@@ -138,15 +144,17 @@ This is the most important check on any unit hydrograph.
 
 Suppose the excess hyetograph consists of $M$ consecutive bursts of duration $D = \Delta t$, with depths $P_1, P_2, \ldots, P_M$ (mm). By proportionality, burst $m$ produces $P_m$ times the unit hydrograph. By time invariance, that response is shifted to start at the beginning of burst $m$. By superposition, the total direct runoff is the sum:
 
-$$
+\begin{equation}
 Q_n = \sum_{m=1}^{\min(n, M)} P_m\, U_{n-m+1}, \qquad n = 1, 2, \ldots, N ,
-$$ (eq-discrete-convolution)
+\tag{9.7}
+\end{equation}
 
 where $Q_n$ and $U_j$ are ordinates at the ends of successive intervals. This is the **discrete convolution** of the hyetograph with the unit hydrograph. Its continuous form, with the instantaneous unit hydrograph $u$ and the excess rate $i$, is the **convolution integral**
 
-$$
+\begin{equation}
 Q(t) = \int_0^t i(\tau)\, u(t - \tau)\, d\tau .
-$$ (eq-convolution-integral)
+\tag{9.8}
+\end{equation}
 
 Figure 9.2 shows the discrete form at work: each burst launches its own scaled copy of the unit hydrograph, and the copies add up.
 
@@ -203,7 +211,7 @@ Since $P_e$ was computed from the same hydrograph, the volume check is satisfied
 
 ### Several bursts: deconvolution
 
-When the excess falls in several bursts, Equation {eq}`eq-discrete-convolution` must be solved for the unknown $U$ with known $P$ and $Q$. This is **deconvolution**. Written out, the equations form a matrix system:
+When the excess falls in several bursts, Equation (9.7) must be solved for the unknown $U$ with known $P$ and $Q$. This is **deconvolution**. Written out, the equations form a matrix system:
 
 $$
 \begin{bmatrix} P_1 & & & \\ P_2 & P_1 & & \\ P_3 & P_2 & P_1 & \\ & P_3 & P_2 & \ddots \\ & & P_3 & \ddots \end{bmatrix}
@@ -267,9 +275,10 @@ $$
 
 The S-curve rises to an equilibrium discharge equal to the input rate times the area, $A/(3.6\,D)$ m³ s⁻¹, reached after a time equal to the time base of the unit hydrograph. Then, exactly as for the linear reservoir in Section 9.2, a $D'$-hour unit hydrograph is the difference between the S-curve and the same curve lagged by $D'$, rescaled for the new rate:
 
-$$
+\begin{equation}
 U_{D'}(t) = \frac{D}{D'}\,\bigl[S(t) - S(t - D')\bigr].
-$$ (eq-s-curve)
+\tag{9.9}
+\end{equation}
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -305,23 +314,25 @@ When the S-curve is built from a UH derived from data, small errors make it osci
 
 ## 9.6 Synthetic unit hydrographs
 
-Most catchments where engineers must build something have no streamflow record. **Synthetic unit hydrographs** estimate the shape from catchment properties, using relations calibrated on gauged catchments. Each method gives a time parameter (lag or time to peak) and a peak discharge or a shape; the volume must always be checked against Equation {eq}`eq-uh-volume`.
+Most catchments where engineers must build something have no streamflow record. **Synthetic unit hydrographs** estimate the shape from catchment properties, using relations calibrated on gauged catchments. Each method gives a time parameter (lag or time to peak) and a peak discharge or a shape; the volume must always be checked against Equation (9.6).
 
 ### Snyder (1938)
 
 Franklin Snyder related the unit hydrograph of catchments in the Appalachian Mountains to their size and shape. The **basin lag** $t_p$ (h), from the centroid of excess rainfall to the peak, is
 
-$$
+\begin{equation}
 t_p = 0.75\,C_t\,(L\,L_c)^{0.3} \qquad (L, L_c \text{ in km}),
-$$ (eq-snyder-lag)
+\tag{9.10}
+\end{equation}
 
 where $L$ is the main-stream length from the outlet to the divide, $L_c$ the length along the main stream from the outlet to the point nearest the catchment centroid, and $C_t$ a regional coefficient (Snyder found values of about 1.8–2.2 in the Appalachians; steeper regions have smaller values). The original form is $t_p = C_t (L L_c)^{0.3}$ with lengths in miles; the factor $0.75 = 1.609^{-0.6}$ converts the lengths, so the same $C_t$ is used in both forms. The standard rainfall duration is $t_r = t_p/5.5$, and the peak discharge per mm of excess is
 
-$$
+\begin{equation}
 Q_p = 0.275\,\frac{C_p\,A}{t_p} \qquad (\text{m}^3\,\text{s}^{-1} \text{ per mm},\ A \text{ in km}^2,\ t_p \text{ in h}),
-$$ (eq-snyder-peak)
+\tag{9.11}
+\end{equation}
 
-converted from the original $q_p = 640\,C_p/t_p$ (ft³ s⁻¹ per mi² per inch), with the peaking coefficient $C_p$ between about 0.4 and 0.8. For a duration $t_R$ other than $t_r$, the lag is adjusted to $t_{pR} = t_p + (t_R - t_r)/4$ and $t_{pR}$ replaces $t_p$ in Equation {eq}`eq-snyder-peak`. Snyder gave only the lag, the peak and empirical widths; the rest of the shape is sketched so that the volume is 1 mm. In the code below the shape is a gamma curve fitted to the Snyder peak and timing with unit volume, a common modern practice.
+converted from the original $q_p = 640\,C_p/t_p$ (ft³ s⁻¹ per mi² per inch), with the peaking coefficient $C_p$ between about 0.4 and 0.8. For a duration $t_R$ other than $t_r$, the lag is adjusted to $t_{pR} = t_p + (t_R - t_r)/4$ and $t_{pR}$ replaces $t_p$ in Equation (9.11). Snyder gave only the lag, the peak and empirical widths; the rest of the shape is sketched so that the volume is 1 mm. In the code below the shape is a gamma curve fitted to the Snyder peak and timing with unit volume, a common modern practice.
 
 ```{code-cell} python
 mi = 1.609344
@@ -344,11 +355,12 @@ $$
 
 where $t_L$ is the lag (Chapter 8), and the recession lasts $1.67\,T_p$, so the time base is $2.67\,T_p$. The peak follows from the volume condition alone. The area of the triangle must equal $A \times 1$ mm:
 
-$$
+\begin{equation}
 \frac{1}{2}\,Q_p\,(2.67\,T_p \times 3600) = 1000\,A
 \quad\Longrightarrow\quad
 Q_p = \frac{2 \times 1000}{2.67 \times 3600}\,\frac{A}{T_p} = 0.208\,\frac{A}{T_p},
-$$ (eq-nrcs-peak)
+\tag{9.12}
+\end{equation}
 
 with $Q_p$ in m³ s⁻¹ per mm, $A$ in km² and $T_p$ in h. This is the SI equivalent of the familiar $q_p = 484\,A/T_p$ (ft³ s⁻¹ per inch, $A$ in mi²); the code above confirms it. The factor 0.208 says that 37.5% of the volume lies under the rising limb. The smooth **curvilinear** NRCS hydrograph has the same peak and time to peak; it is closely approximated by the gamma-type curve
 
@@ -372,9 +384,10 @@ where $I$ is the translated inflow and $O$ the outflow. A time–area curve can 
 
 James Nash represented the catchment as a series of $n$ identical linear reservoirs, each with storage constant $k$. The outflow of each reservoir is the inflow of the next, and the impulse response of the cascade is a **gamma distribution**:
 
-$$
+\begin{equation}
 u(t) = \frac{1}{k\,\Gamma(n)}\left(\frac{t}{k}\right)^{n-1} e^{-t/k},
-$$ (eq-nash)
+\tag{9.13}
+\end{equation}
 
 where $\Gamma$ is the gamma function ($\Gamma(n) = (n - 1)!$ for integer $n$, but $n$ need not be an integer). With $n = 1$ this is the single reservoir of Section 9.2; as $n$ grows, the response becomes more delayed and more symmetric (Figure 9.5). The mean of the IUH, its **lag**, is $n\,k$, and its variance is $n\,k^2$. These moments give a direct way to fit $n$ and $k$: the lag between the centroids of excess rainfall and direct runoff estimates $nk$, and the difference between the second moments of the two estimates $nk^2$ (Example 9.6).
 
@@ -456,7 +469,7 @@ for name, v in res.items():
 To compute a flood hydrograph from a storm:
 
 1. compute the excess rainfall hyetograph with a loss method (Chapter 7), at a time step equal to the UH duration;
-2. convolve it with the unit hydrograph (Equation {eq}`eq-discrete-convolution`);
+2. convolve it with the unit hydrograph (Equation (9.7));
 3. add baseflow (Chapter 6);
 4. check that the direct runoff depth equals the total excess.
 
@@ -506,7 +519,7 @@ print(f"1-h UH with 10, 10, 10 mm: peak {np.convolve([10, 10, 10], U1).max():.1f
 
 The two answers are identical, as superposition requires: the 3-hour UH is simply a convenient package of the same calculation.
 
-**Example 9.5 — NRCS unit hydrograph.** For the 120 km² catchment of Figure 9.6 ($t_c$ = 5.5 h), find $T_p$ and $Q_p$ for a 1-hour UH by Equation {eq}`eq-nrcs-peak`, and check that both the triangular and the gamma-shaped curves hold 1 mm.
+**Example 9.5 — NRCS unit hydrograph.** For the 120 km² catchment of Figure 9.6 ($t_c$ = 5.5 h), find $T_p$ and $Q_p$ for a 1-hour UH by Equation (9.12), and check that both the triangular and the gamma-shaped curves hold 1 mm.
 
 ```{code-cell} python
 Tp = 1.0 / 2 + 0.6 * 5.5

@@ -64,9 +64,10 @@ where $\sigma = 5.67 \times 10^{-8}$ W m⁻² K⁻⁴ is the Stefan–Boltzmann 
 
 Adding the four terms gives the **net radiation**:
 
-$$
+\begin{equation}
 R_n = (1 - \alpha)\,K_\downarrow + L_\downarrow - L_\uparrow .
-$$ (eq-net-radiation)
+\tag{2.1}
+\end{equation}
 
 ```{code-cell} python
 :tags: [hide-input]
@@ -99,9 +100,10 @@ It is convenient to know two conversions. A flux of 1 W m⁻² sustained for a d
 
 The land surface is a thin layer with almost no capacity to store heat. Energy arriving as net radiation must therefore leave at once through three routes:
 
-$$
+\begin{equation}
 R_n = \lambda E + H + G ,
-$$ (eq-energy-balance)
+\tag{2.2}
+\end{equation}
 
 or, written the way it is used in this book,
 
@@ -291,23 +293,26 @@ $$
 
 where $T$ is in kelvin and $v_v$, $v_l$ are the specific volumes of vapor and liquid. The liquid volume is about a thousand times smaller than the vapor volume and can be ignored. Treating vapor as an ideal gas, $v_v = R_v T / e_s$ with $R_v = 461.5$ J kg⁻¹ K⁻¹, gives the **Clausius–Clapeyron equation**:
 
-$$
+\begin{equation}
 \frac{1}{e_s}\frac{de_s}{dT} = \frac{\lambda}{R_v T^{2}} .
-$$ (eq-clausius-clapeyron)
+\tag{2.3}
+\end{equation}
 
 At 20 °C (293 K) the right side is $2.45\times10^{6} / (461.5 \times 293^2) \approx 0.062$ K⁻¹: **the saturation vapor pressure increases by about 6% per degree**. This exponential sensitivity has large consequences. Warm air can carry much more water than cold air, which is why the heaviest rainfalls occur in summer and in the tropics, and why a warmer climate is expected to intensify extreme rainfall (Chapter 13).
 
 For practical work, an empirical fit to measured values is used. This book uses the **Tetens formula** in the form adopted by FAO-56:
 
-$$
+\begin{equation}
 e_s(T_a) = 0.6108 \exp\!\left(\frac{17.27\, T_a}{T_a + 237.3}\right) \quad (\text{kPa},\ T_a \text{ in °C}).
-$$ (eq-tetens)
+\tag{2.4}
+\end{equation}
 
 Its derivative, the **slope of the saturation vapor pressure curve**, appears in every combination equation for evaporation (Chapter 4):
 
-$$
+\begin{equation}
 \Delta = \frac{de_s}{dT_a} = \frac{4098\, e_s(T_a)}{(T_a + 237.3)^{2}} \quad (\text{kPa °C}^{-1}).
-$$ (eq-delta)
+\tag{2.5}
+\end{equation}
 
 The code below checks that the Tetens formula and its derivative agree with the integrated Clausius–Clapeyron equation.
 
@@ -333,7 +338,7 @@ The same moisture content can be described in several ways. All of them follow f
 
 - **Relative humidity** is the ratio of actual to saturation vapor pressure, $RH = e / e_s(T_a)$, usually given in percent.
 - **Vapor pressure deficit** is $e_s(T_a) - e$, the "drying power" of the air. It drives evaporation (Chapter 4).
-- **Dew point** $T_d$ is the temperature to which air must be cooled at constant pressure and moisture content to become saturated, so that $e = e_s(T_d)$. It is found by inverting Equation {eq}`eq-tetens`:
+- **Dew point** $T_d$ is the temperature to which air must be cooled at constant pressure and moisture content to become saturated, so that $e = e_s(T_d)$. It is found by inverting Equation (2.4):
 
 $$
 T_d = \frac{237.3\, \ln(e/0.6108)}{17.27 - \ln(e/0.6108)} .
@@ -375,15 +380,17 @@ glue("rh_ex", float(e_air / es_kPa(Ta) * 100), display=False)
 
 A **psychrometer** has two thermometers. One measures the air temperature (the dry bulb). The other is wrapped in a wet wick (the wet bulb). Evaporation from the wick cools it until the heat drawn from the passing air balances the latent heat used, at the **wet-bulb temperature** $T_w$. The drier the air, the faster the evaporation and the larger the wet-bulb depression $T_a - T_w$. An energy balance on the wick gives
 
-$$
+\begin{equation}
 e = e_s(T_w) - \gamma_{\text{psy}}\, (T_a - T_w),
-$$ (eq-psychrometer)
+\tag{2.6}
+\end{equation}
 
 where $\gamma_{\text{psy}} = a\, p$ is the psychrometer constant, with $a \approx 6.62 \times 10^{-4}$ °C⁻¹ for a ventilated psychrometer (FAO-56). The same group of terms, the **psychrometric constant**
 
-$$
+\begin{equation}
 \gamma = \frac{c_p\, p}{\varepsilon\, \lambda} \approx 0.665 \times 10^{-3}\, p \quad (\text{kPa °C}^{-1}),
-$$ (eq-gamma)
+\tag{2.7}
+\end{equation}
 
 appears in the Penman equation (Chapter 4). It depends on air pressure, which falls with elevation $z$ (m) roughly as
 

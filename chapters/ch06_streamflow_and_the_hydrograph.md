@@ -103,9 +103,10 @@ where $v_j$ is the mean velocity, $d_j$ the depth and $w_j$ the width of strip $
 
 Plotting the measured discharges against the stage at the time of measurement gives the **stage–discharge relation**, or **rating curve**. At a section controlled by a downstream riffle or by the channel itself, it is usually well described by a power function:
 
-$$
+\begin{equation}
 Q = a\,(h - h_0)^b ,
-$$ (eq-rating)
+\tag{6.1}
+\end{equation}
 
 where $h_0$ is the stage of zero flow, and $a$ and $b$ are fitted constants. The exponent reflects the hydraulics of the control: about 1.5 for a section that behaves like a broad weir, about 5/3 for a wide channel in uniform flow (from the [Manning equation](https://daehakim-waterlab.github.io/hydraulics/chapters/ch06_flow_in_open_channels.html#uniform-flow-the-chezy-and-manning-equations)), and larger for V-shaped or trapezoidal sections. Taking logarithms, $\ln Q = \ln a + b \ln(h - h_0)$, which is a straight line, so $a$ and $b$ can be found by linear regression once $h_0$ is chosen. The value of $h_0$ can be surveyed at the control or chosen to make the plot straightest.
 
@@ -176,9 +177,10 @@ Three graphical methods are common (Figure 6.3).
 1. **Constant discharge.** A horizontal line from the start of the rise. Simple, but it ignores the decline of baseflow and makes the direct runoff never end if the flow drops below the starting value.
 2. **Straight line to a fixed time after the peak.** A straight line joins the start of the rise to the point on the falling limb $N$ days after the peak. An empirical formula for $N$ (Linsley, Kohler and Paulhus, 1975), originally written as $N = A^{0.2}$ with $A$ in square miles, becomes in SI units
 
-$$
+\begin{equation}
 N = 0.827\,A^{0.2} \qquad (N \text{ in days},\ A \text{ in km}^2),
-$$ (eq-N-days)
+\tag{6.2}
+\end{equation}
 
 since $(1/2.59)^{0.2} = 0.827$. The code below checks the conversion.
 
@@ -216,19 +218,21 @@ for name, b in [("const", b_const), ("line", b_line)]:
 
 For long records, baseflow is separated automatically by treating the hydrograph as a signal: quickflow is the high-frequency part, baseflow the low-frequency part. The one-parameter filter of Lyne and Hollick (1979) computes the quickflow $q_f$ from the total flow $Q$ at successive time steps:
 
-$$
+\begin{equation}
 q_{f,t} = \alpha\, q_{f,t-1} + \frac{1 + \alpha}{2}\,\bigl(Q_t - Q_{t-1}\bigr),
 \qquad b_t = Q_t - q_{f,t},
-$$ (eq-lyne-hollick)
+\tag{6.3}
+\end{equation}
 
 with the constraint $0 \le b_t \le Q_t$. The filter parameter $\alpha$ controls how slowly baseflow may change; $\alpha = 0.925$ for daily data was recommended by Nathan and McMahon (1990) after comparing with graphical methods. The filter is often passed three times (forward, backward, forward) to smooth the result.
 
 Eckhardt (2005) derived a two-parameter filter from the assumption that the aquifer behaves as a linear reservoir (Chapter 5):
 
-$$
+\begin{equation}
 b_t = \frac{(1 - \text{BFI}_{\max})\,a\,b_{t-1} + (1 - a)\,\text{BFI}_{\max}\,Q_t}{1 - a\,\text{BFI}_{\max}},
 \qquad b_t \le Q_t ,
-$$ (eq-eckhardt)
+\tag{6.4}
+\end{equation}
 
 where $a$ is the recession constant of baseflow (Section 6.5) and $\text{BFI}_{\max}$ is the maximum long-term baseflow index that the filter can produce, which reflects the aquifer (Eckhardt suggested about 0.80 for perennial streams on porous aquifers, 0.50 for ephemeral streams on porous aquifers and 0.25 for perennial streams on hard rock).
 
@@ -292,9 +296,10 @@ for name, b in [("true", Qs), ("lh", b_lh), ("ek", b_ek)]:
 
 During dry weather the flow declines as the catchment drains. If the catchment behaves like a linear reservoir (Chapter 5),
 
-$$
+\begin{equation}
 Q_t = Q_0\, e^{-t/k} = Q_0\, K_r^{\,t}, \qquad K_r = e^{-\Delta t / k},
-$$ (eq-recession-const)
+\tag{6.5}
+\end{equation}
 
 where $K_r$ is the **recession constant** per time step $\Delta t$ (for daily data, typically 0.85–0.995: smaller for fast components, larger for groundwater). On a semi-logarithmic plot an exponential recession is a straight line, which is why hydrographs are often plotted with a logarithmic discharge axis. In practice the recession constant often increases as flow decreases: fast stores drain first, and the slow aquifer controls the late recession. Overlaying many recession segments gives a **master recession curve** that summarizes this behavior.
 
@@ -320,7 +325,7 @@ area = (w * d).sum(); Qm = (v * d * w).sum()
 print(f"A = {area:.2f} m², Q = {Qm:.2f} m³/s, mean velocity = {Qm / area:.2f} m/s")
 ```
 
-**Example 6.2 — Fitting and extrapolating a rating curve.** Twelve gaugings at a station span stages from 0.45 m to 1.9 m. The zero-flow stage is surveyed at $h_0$ = 0.20 m. Fit Equation {eq}`eq-rating`, and estimate the discharge at a flood stage of 4.0 m. The synthetic "true" relation used to create the gaugings changes slope above 2.5 m, where water spills onto the floodplain.
+**Example 6.2 — Fitting and extrapolating a rating curve.** Twelve gaugings at a station span stages from 0.45 m to 1.9 m. The zero-flow stage is surveyed at $h_0$ = 0.20 m. Fit Equation (6.1), and estimate the discharge at a flood stage of 4.0 m. The synthetic "true" relation used to create the gaugings changes slope above 2.5 m, where water spills onto the floodplain.
 
 ```{code-cell} python
 rng = np.random.default_rng(4)
@@ -353,7 +358,7 @@ plt.show()
 
 The fitted curve reproduces the gauged range within a few percent, but at 4 m it gives less than half of the true flood discharge. Flood peaks derived from extrapolated ratings should be checked by a hydraulic calculation of the floodplain section.
 
-**Example 6.3 — Direct runoff from a storm.** For the hydrograph of Figure 6.2, use the straight-line method with $N$ from Equation {eq}`eq-N-days` to compute the volume and depth of direct runoff, and the event runoff ratio for the 51 mm storm.
+**Example 6.3 — Direct runoff from a storm.** For the hydrograph of Figure 6.2, use the straight-line method with $N$ from Equation (6.2) to compute the volume and depth of direct runoff, and the event runoff ratio for the 51 mm storm.
 
 ```{code-cell} python
 dro = (Q - b_line).clip(0)
@@ -380,7 +385,7 @@ The last line uses $S = kQ$ to estimate how much water the catchment still holds
 - **Treating baseflow separation as a measurement.** It is a convention. Use the same method that was used to derive any unit hydrograph you apply.
 - **Extrapolating a rating curve without checking the hydraulics.** Above the highest gauging, flow on the floodplain or a change of control can change the curve completely.
 - **Forgetting that direct runoff depth equals excess rainfall depth.** If the two differ, the catchment area, the separation or the loss calculation is wrong.
-- **Using the wrong area in Equation {eq}`eq-N-days`.** The original formula used square miles; the SI form has the factor 0.827.
+- **Using the wrong area in Equation (6.2).** The original formula used square miles; the SI form has the factor 0.827.
 - **Comparing BFI values from different methods or parameters.** The filter and its parameters must be reported with the index.
 - **Reading a single event's runoff ratio as a catchment property.** It changes with antecedent wetness and storm size.
 

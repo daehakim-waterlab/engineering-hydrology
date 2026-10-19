@@ -179,9 +179,10 @@ Two cautions apply. First, the **topographic divide** drawn from surface elevati
 
 Take the catchment as a **control volume** that extends from the top of the vegetation down to an impermeable layer below the soil and groundwater. Water enters as precipitation and leaves as evaporation and streamflow. Water is incompressible for our purposes (see Chapter 1 of the [Hydraulics](https://daehakim-waterlab.github.io/hydraulics/) book), so conservation of mass is the same as conservation of volume:
 
-$$
+\begin{equation}
 \frac{dS}{dt} = P - E - Q + Q_{g,\mathrm{in}} - Q_{g,\mathrm{out}},
-$$ (eq-water-balance)
+\tag{1.1}
+\end{equation}
 
 where
 
@@ -219,13 +220,14 @@ $$
 
 The same argument with 3600 s gives the hourly form,
 
-$$
+\begin{equation}
 q\ (\text{mm h}^{-1}) = 3.6\,\frac{Q}{A}
 \qquad \Longleftrightarrow \qquad
 Q\ (\text{m}^3\,\text{s}^{-1}) = \frac{q\,A}{3.6} = 0.278\, q\, A ,
-$$ (eq-mmh-to-cms)
+\tag{1.2}
+\end{equation}
 
-with $q$ in mm h⁻¹ and $A$ in km². Equation {eq}`eq-mmh-to-cms` will reappear in Chapter 8 as the heart of the rational method. Remember the key number: **1 mm of water over 1 km² is 1000 m³**.
+with $q$ in mm h⁻¹ and $A$ in km². Equation (1.2) will reappear in Chapter 8 as the heart of the rational method. Remember the key number: **1 mm of water over 1 km² is 1000 m³**.
 
 ```{code-cell} python
 :tags: [remove-input]
@@ -252,11 +254,12 @@ $$
 
 where the bars denote annual means. The left side is a bounded number divided by $N$, so it shrinks towards zero as the record grows. For a long record,
 
-$$
+\begin{equation}
 \bar{Q} \approx \bar{P} - \bar{E}.
-$$ (eq-long-term-balance)
+\tag{1.3}
+\end{equation}
 
-This simple result is very useful. If precipitation and streamflow are measured, Equation {eq}`eq-long-term-balance` gives the long-term evapotranspiration, which is hard to measure directly (Chapter 4). The ratio $\bar{Q}/\bar{P}$ is the long-term **runoff ratio**, a first summary of a catchment's climate and soils.
+This simple result is very useful. If precipitation and streamflow are measured, Equation (1.3) gives the long-term evapotranspiration, which is hard to measure directly (Chapter 4). The ratio $\bar{Q}/\bar{P}$ is the long-term **runoff ratio**, a first summary of a catchment's climate and soils.
 
 For a single month, or a single storm, the storage term cannot be ignored. During a summer storm most of the rain may go into storage (wetting the soil) and come out weeks later as baseflow or evapotranspiration. Figure 1.3 shows this with a simple "bucket" model driven by 30 years of synthetic daily weather: storage swings by up to {glue:text}`b_Srange:.0f` mm, but the average imbalance $\overline{P - E - Q}$ shrinks steadily as more years are included.
 

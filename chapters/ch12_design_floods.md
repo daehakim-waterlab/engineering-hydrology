@@ -114,7 +114,7 @@ from scipy.stats import gamma
 def idf(D_min, T):                        # Chapter 8/11 illustrative IDF, mm/h
     return 1450.0 * (1 + 0.20 * np.log(T / 10.0)) / (D_min + 12.0) ** 0.72
 
-def arf(D_h, A_km2):                      # Chapter 11, Eq. (11.arf)
+def arf(D_h, A_km2):                      # Chapter 11, Eq. (11.5)
     return 1 - np.exp(-1.1 * D_h ** 0.25) + np.exp(-1.1 * D_h ** 0.25 - 0.00386 * A_km2)
 
 from scipy.stats import beta
@@ -212,7 +212,7 @@ For a 100-year, 12-hour storm, the point depth from the IDF curve is reduced by 
 
 ### Excess rainfall
 
-Design guidelines often assume wet antecedent conditions for rare floods; here CN$_{\text{II}}$ = 70 is converted to AMC III with Equation (7.amc), giving CN$_{\text{III}}$ ≈ 84. The cumulative curve number method (Chapter 7) gives the excess hyetograph.
+Design guidelines often assume wet antecedent conditions for rare floods; here CN$_{\text{II}}$ = 70 is converted to AMC III with Equation (7.5), giving CN$_{\text{III}}$ ≈ 84. The cumulative curve number method (Chapter 7) gives the excess hyetograph.
 
 ### Direct runoff, baseflow and routing
 
