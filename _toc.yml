@@ -1,0 +1,26 @@
+# Table of contents: https://jupyterbook.org/en/stable/structure/toc.html
+# Chapter, section, figure and table numbers are written in the chapter files themselves.
+format: jb-book
+root: intro
+parts:
+  - caption: "Part I: Foundations"
+    chapters:
+      - file: chapters/ch01_hydrology_as_an_engineering_science
+      - file: chapters/ch02_water_and_energy_at_the_land_surface
+  - caption: "Part II: Processes"
+    chapters:
+      - file: chapters/ch03_precipitation
+      - file: chapters/ch04_evaporation_and_evapotranspiration
+      - file: chapters/ch05_soil_water_infiltration_and_groundwater
+      - file: chapters/ch06_streamflow_and_the_hydrograph
+  - caption: "Part III: Rainfall–runoff analysis"
+    chapters:
+      - file: chapters/ch07_excess_rainfall
+      - file: chapters/ch08_peak_flow_for_small_catchments
+      - file: chapters/ch09_the_catchment_as_a_linear_system
+      - file: chapters/ch10_flood_routing
+  - caption: "Part IV: Design"
+    chapters:
+      - file: chapters/ch11_design_rainfall
+      - file: chapters/ch12_design_floods
+      - file: chapters/ch13_why_simple_models_work
