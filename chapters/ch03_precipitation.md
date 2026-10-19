@@ -73,7 +73,7 @@ Hydrologists classify precipitation by the mechanism that lifts the air. Each ty
 
 ### Rain gauges
 
-A rain gauge collects the precipitation falling on a horizontal opening of known area and measures its depth. The Korean *cheugugi* of 1441 was among the earliest standardized gauges used in a network (see [*A Brief History of Fluid Mechanics and Water Sciences*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#koreas-rain-gauge-and-river-gauge)). Today's types include:
+A rain gauge collects the precipitation falling on a horizontal opening of known area and measures its depth. The Korean *cheugugi* of 1441 was among the earliest standardized gauges used in a network (see [*A Brief History of Fluid Mechanics and Water Sciences*](https://hydroclimatol.com/water-history/history-of-hydrology/#koreas-rain-gauge-and-river-gauge)). Today's types include:
 
 - **Non-recording (manual) gauges**, read once a day, which give daily totals;
 - **Tipping-bucket gauges**, in which a small two-sided bucket tips each time it collects a fixed depth (often 0.5 mm) and the time of each tip is logged;

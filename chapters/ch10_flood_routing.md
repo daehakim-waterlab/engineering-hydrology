@@ -77,7 +77,7 @@ $$
 O = C_w\, L_w\,(z - z_c)^{3/2}, \qquad z > z_c,
 $$
 
-where $C_w$ is a discharge coefficient (about 2.0–2.2 m¹ᐟ² s⁻¹ for an ogee crest; see the section on [weirs](https://daehakim-waterlab.github.io/hydraulics/chapters/ch06_flow_in_open_channels.html#flow-measurement-with-weirs) in the Hydraulics book). Eliminating $z$ between the two curves gives a single **storage–outflow** relation $S(O)$.
+where $C_w$ is a discharge coefficient (about 2.0–2.2 m¹ᐟ² s⁻¹ for an ogee crest; see the section on [weirs](https://hydroclimatol.com/hydraulics/chapters/ch06_flow_in_open_channels.html#flow-measurement-with-weirs) in the Hydraulics book). Eliminating $z$ between the two curves gives a single **storage–outflow** relation $S(O)$.
 
 ### The storage-indication method
 
@@ -162,7 +162,7 @@ S = K\,\bigl[x\,I + (1 - x)\,O\bigr],
 \tag{10.4}
 \end{equation*}
 
-where $K$ (h) is a storage constant, close to the travel time of the flood wave through the reach, and $x$ (dimensionless, 0 to 0.5) is a weighting factor. With $x = 0$ storage depends on outflow only, and the reach acts as a linear reservoir; with $x = 0.5$, inflow and outflow weigh equally and the flood is translated without attenuation. Natural rivers usually have $x$ between 0 and 0.3. (The method was developed in the 1930s; its history is part of the story of flood methods told in [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#floods-from-formulas-to-the-unit-hydrograph).)
+where $K$ (h) is a storage constant, close to the travel time of the flood wave through the reach, and $x$ (dimensionless, 0 to 0.5) is a weighting factor. With $x = 0$ storage depends on outflow only, and the reach acts as a linear reservoir; with $x = 0.5$, inflow and outflow weigh equally and the flood is translated without attenuation. Natural rivers usually have $x$ between 0 and 0.3. (The method was developed in the 1930s; its history is part of the story of flood methods told in [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#floods-from-formulas-to-the-unit-hydrograph).)
 
 ### The routing equation
 
@@ -263,7 +263,7 @@ glue("mk_C0", float(C[0]), display=False)
 
 ### The equations
 
-The physics of a flood wave in a river is described by the one-dimensional equations of unsteady open-channel flow, published by Adhémar Barré de Saint-Venant in 1871 (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/industrial-age-engineering-hydraulics/#pipes-channels-and-groundwater-empirical-hydraulics-matures)). For a channel with flow cross-sectional area $A$ (in this section only; elsewhere $A$ is the catchment area), discharge $Q$, depth $y$, bed slope $S_0$ and friction slope $S_f$:
+The physics of a flood wave in a river is described by the one-dimensional equations of unsteady open-channel flow, published by Adhémar Barré de Saint-Venant in 1871 (see [*A Brief History*](https://hydroclimatol.com/water-history/industrial-age-engineering-hydraulics/#pipes-channels-and-groundwater-empirical-hydraulics-matures)). For a channel with flow cross-sectional area $A$ (in this section only; elsewhere $A$ is the catchment area), discharge $Q$, depth $y$, bed slope $S_0$ and friction slope $S_f$:
 
 \begin{equation*}
 \frac{\partial A}{\partial t} + \frac{\partial Q}{\partial x} = q_L ,
@@ -278,7 +278,7 @@ The physics of a flood wave in a river is described by the one-dimensional equat
 \tag{10.9}
 \end{equation*}
 
-where $q_L$ is the lateral inflow per unit length. The first is conservation of mass; the second, conservation of momentum. Steady, gradually varied flow (Chapter 6 of the [Hydraulics](https://daehakim-waterlab.github.io/hydraulics/chapters/ch06_flow_in_open_channels.html#gradually-varied-flow) book) is the special case with no time derivatives. Solving the full equations, the **dynamic wave**, needs cross-section data along the river, boundary conditions and a numerical scheme, and is done with programs such as HEC-RAS.
+where $q_L$ is the lateral inflow per unit length. The first is conservation of mass; the second, conservation of momentum. Steady, gradually varied flow (Chapter 6 of the [Hydraulics](https://hydroclimatol.com/hydraulics/chapters/ch06_flow_in_open_channels.html#gradually-varied-flow) book) is the special case with no time derivatives. Solving the full equations, the **dynamic wave**, needs cross-section data along the river, boundary conditions and a numerical scheme, and is done with programs such as HEC-RAS.
 
 ### Simplified forms
 

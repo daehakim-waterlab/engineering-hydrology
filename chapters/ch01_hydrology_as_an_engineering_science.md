@@ -54,7 +54,7 @@ Civil engineers meet hydrology whenever a structure must deal with water that it
 
 The third question needs probability and statistics. This book uses the results of frequency analysis (Chapter 11) but does not teach how to fit frequency distributions; that is covered in a separate textbook on statistical hydrology.
 
-Hydrology is younger than hydraulics as a quantitative science. The first measured water balance of a river basin, Pierre Perrault's study of the upper Seine published in 1674, showed that rainfall was more than enough to supply the river (see [*A Brief History of Fluid Mechanics and Water Sciences*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#the-birth-of-quantitative-hydrology-perrault-mariotte-and-halley)). Most of the methods in this book were developed in the 19th and 20th centuries by engineers who needed answers before the science was complete. As a result, engineering hydrology mixes physics (conservation of mass and energy, Darcy's law) with empirical formulas whose coefficients come from data. Knowing which is which is an important skill.
+Hydrology is younger than hydraulics as a quantitative science. The first measured water balance of a river basin, Pierre Perrault's study of the upper Seine published in 1674, showed that rainfall was more than enough to supply the river (see [*A Brief History of Fluid Mechanics and Water Sciences*](https://hydroclimatol.com/water-history/history-of-hydrology/#the-birth-of-quantitative-hydrology-perrault-mariotte-and-halley)). Most of the methods in this book were developed in the 19th and 20th centuries by engineers who needed answers before the science was complete. As a result, engineering hydrology mixes physics (conservation of mass and energy, Darcy's law) with empirical formulas whose coefficients come from data. Knowing which is which is an important skill.
 
 ## 1.2 The water cycle and the main stores
 
@@ -177,7 +177,7 @@ Two cautions apply. First, the **topographic divide** drawn from surface elevati
 
 ### Conservation of mass
 
-Take the catchment as a **control volume** that extends from the top of the vegetation down to an impermeable layer below the soil and groundwater. Water enters as precipitation and leaves as evaporation and streamflow. Water is incompressible for our purposes (see Chapter 1 of the [Hydraulics](https://daehakim-waterlab.github.io/hydraulics/) book), so conservation of mass is the same as conservation of volume:
+Take the catchment as a **control volume** that extends from the top of the vegetation down to an impermeable layer below the soil and groundwater. Water enters as precipitation and leaves as evaporation and streamflow. Water is incompressible for our purposes (see Chapter 1 of the [Hydraulics](https://hydroclimatol.com/hydraulics/) book), so conservation of mass is the same as conservation of volume:
 
 \begin{equation*}
 \frac{dS}{dt} = P - E - Q + Q_{g,\mathrm{in}} - Q_{g,\mathrm{out}},

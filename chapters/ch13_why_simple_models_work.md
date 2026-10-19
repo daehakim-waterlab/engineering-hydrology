@@ -76,7 +76,7 @@ glue("nash_err", float(np.abs(fit - catch).max() / catch.max() * 100), display=F
 
 *Figure 13.1. Emergent simplicity. Each of 2000 synthetic hillslopes responds like a linear reservoir delayed by its travel time to the outlet (a few are shown in gray). Their area-weighted sum, the catchment response, is matched by a Nash cascade fitted only by its first two moments, with a largest error of {glue:text}`nash_err:.0f`% of the peak.*
 
-A second part of the answer is that catchments are not random collections of parts. Over long periods, water, soil, vegetation and the drainage network shape one another, and the result has **regular statistical structure**. Robert Horton (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)) found that the numbers, lengths and areas of streams of successive orders form geometric series, the **Horton laws** of drainage composition. Such regularities are **power laws**: relations of the form
+A second part of the answer is that catchments are not random collections of parts. Over long periods, water, soil, vegetation and the drainage network shape one another, and the result has **regular statistical structure**. Robert Horton (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)) found that the numbers, lengths and areas of streams of successive orders form geometric series, the **Horton laws** of drainage composition. Such regularities are **power laws**: relations of the form
 
 \begin{equation*}
 y = a\,x^{b},

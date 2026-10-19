@@ -172,7 +172,7 @@ So **1 mm d⁻¹ of evaporation uses 2.45 MJ m⁻² d⁻¹, or a steady 28.4 W m
 
 Air temperature normally falls with height in the lower atmosphere. The rate of decrease is the **lapse rate** $\Gamma = -dT/dz$.
 
-**The dry adiabatic lapse rate.** Imagine a parcel of unsaturated air rising quickly enough that it exchanges no heat with its surroundings (an **adiabatic** process). As it rises the surrounding pressure falls, the parcel expands and does work on its surroundings, and its temperature drops. The first law of thermodynamics for a unit mass of air at constant pressure heat capacity $c_p$ is $c_p\, dT = \frac{1}{\rho} dp$ when no heat is added. The pressure change with height is hydrostatic, $dp = -\rho g\, dz$ (Chapter 2 of the [Hydraulics](https://daehakim-waterlab.github.io/hydraulics/) book). Combining the two,
+**The dry adiabatic lapse rate.** Imagine a parcel of unsaturated air rising quickly enough that it exchanges no heat with its surroundings (an **adiabatic** process). As it rises the surrounding pressure falls, the parcel expands and does work on its surroundings, and its temperature drops. The first law of thermodynamics for a unit mass of air at constant pressure heat capacity $c_p$ is $c_p\, dT = \frac{1}{\rho} dp$ when no heat is added. The pressure change with height is hydrostatic, $dp = -\rho g\, dz$ (Chapter 2 of the [Hydraulics](https://hydroclimatol.com/hydraulics/) book). Combining the two,
 
 $$
 \Gamma_d = -\frac{dT}{dz} = \frac{g}{c_p} = \frac{9.81}{1005} \approx 9.8\ \text{K km}^{-1}.

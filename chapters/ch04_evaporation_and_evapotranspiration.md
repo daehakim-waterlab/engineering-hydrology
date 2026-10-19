@@ -92,7 +92,7 @@ Writing vapor density in terms of vapor pressure (Chapter 2) and multiplying by 
 \tag{4.2}
 \end{equation*}
 
-where $\rho_a$ is the air density, $c_p = 1.013\times10^{-3}$ MJ kg⁻¹ °C⁻¹ the specific heat of air, $\gamma$ the psychrometric constant, $e_s(T_s)$ the saturation vapor pressure at the temperature of the wet surface and $e_a$ the actual vapor pressure of the air. The equation says the evaporation rate is proportional to the vapor pressure difference and to a function of wind speed. John Dalton reached this conclusion experimentally in 1802 (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#evaporation-and-the-atmosphere)), and many empirical lake-evaporation formulas have the form
+where $\rho_a$ is the air density, $c_p = 1.013\times10^{-3}$ MJ kg⁻¹ °C⁻¹ the specific heat of air, $\gamma$ the psychrometric constant, $e_s(T_s)$ the saturation vapor pressure at the temperature of the wet surface and $e_a$ the actual vapor pressure of the air. The equation says the evaporation rate is proportional to the vapor pressure difference and to a function of wind speed. John Dalton reached this conclusion experimentally in 1802 (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#evaporation-and-the-atmosphere)), and many empirical lake-evaporation formulas have the form
 
 $$
 E = f(u)\,\bigl[e_s(T_s) - e_a\bigr], \qquad f(u) = a + b\,u .
@@ -126,7 +126,7 @@ The **Bowen ratio energy balance** method uses this equation with measured $R_n$
 
 ## 4.4 The Penman equation
 
-In 1948 Howard Penman found a way around the unknown surface temperature (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)). The idea is to use **both** the mass-transfer equation and the energy balance, and to eliminate $T_s$ between them.
+In 1948 Howard Penman found a way around the unknown surface temperature (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)). The idea is to use **both** the mass-transfer equation and the energy balance, and to eliminate $T_s$ between them.
 
 **Step 1: linearize the saturation curve.** Over a small temperature range,
 
@@ -165,7 +165,7 @@ with $E$ in mm d⁻¹, $R_n$ in MJ m⁻² d⁻¹ (computed with the albedo of wa
 
 ## 4.5 The Penman–Monteith equation
 
-Leaves are not wet surfaces. Vapor inside a leaf is saturated, but to reach the air it must pass through the stomata, which adds a second resistance in series with $r_a$. John Monteith (1965) treated the whole canopy as a single **big leaf** with a **surface (canopy) resistance** $r_s$ (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)). The vapor flux becomes $(\rho_a c_p / \gamma)\,[e_s(T_s) - e_a]/(r_a + r_s)$, while heat still leaves through $r_a$ alone. Repeating the three steps of Section 4.4 gives the **Penman–Monteith equation**:
+Leaves are not wet surfaces. Vapor inside a leaf is saturated, but to reach the air it must pass through the stomata, which adds a second resistance in series with $r_a$. John Monteith (1965) treated the whole canopy as a single **big leaf** with a **surface (canopy) resistance** $r_s$ (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)). The vapor flux becomes $(\rho_a c_p / \gamma)\,[e_s(T_s) - e_a]/(r_a + r_s)$, while heat still leaves through $r_a$ alone. Repeating the three steps of Section 4.4 gives the **Penman–Monteith equation**:
 
 \begin{equation*}
 \lambda E = \frac{\Delta\,(R_n - G) + \rho_a c_p\, \delta e / r_a}{\Delta + \gamma\,\bigl(1 + r_s / r_a\bigr)} .
@@ -324,7 +324,7 @@ $$
 E_{\text{eq}} = \frac{\Delta}{\Delta + \gamma}\,\frac{R_n - G}{\lambda} .
 $$
 
-Priestley and Taylor (1972) analyzed measurements over oceans, lakes and well-watered land and found that evaporation was consistently larger than $E_{\text{eq}}$ by a nearly constant factor (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)):
+Priestley and Taylor (1972) analyzed measurements over oceans, lakes and well-watered land and found that evaporation was consistently larger than $E_{\text{eq}}$ by a nearly constant factor (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)):
 
 \begin{equation*}
 E_{PT} = \alpha\,\frac{\Delta}{\Delta + \gamma}\,\frac{R_n - G}{\lambda}, \qquad \alpha \approx 1.26 .
@@ -406,7 +406,7 @@ valid over many years when storage change and groundwater exchange are negligibl
 - the ratio $\bar{E}/\bar{E}_p$ shows how close the catchment comes to its potential rate;
 - the **aridity index** $\phi = \bar{E}_p / \bar{P}$ compares the energy supply with the water supply.
 
-Two limits are obvious: $\bar{E}$ cannot exceed $\bar{P}$ (the **water limit**) or $\bar{E}_p$ (the **energy limit**). Mikhail Budyko observed that catchments around the world lie close to a single curve beneath these limits (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)). A one-parameter form of this curve, due to Fu (1981), is
+Two limits are obvious: $\bar{E}$ cannot exceed $\bar{P}$ (the **water limit**) or $\bar{E}_p$ (the **energy limit**). Mikhail Budyko observed that catchments around the world lie close to a single curve beneath these limits (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#evaporation-from-energy-penman-thornthwaite-and-budyko)). A one-parameter form of this curve, due to Fu (1981), is
 
 \begin{equation*}
 \frac{\bar{E}}{\bar{P}} = 1 + \phi - \bigl(1 + \phi^{\,w}\bigr)^{1/w} ,

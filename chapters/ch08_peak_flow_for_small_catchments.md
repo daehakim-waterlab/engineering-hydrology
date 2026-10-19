@@ -58,7 +58,7 @@ Q_p = \frac{C\, i\, A}{3.6} = 0.278\, C\, i\, A \qquad (Q_p \text{ in m}^3\,\tex
 \tag{8.1}
 \end{equation*}
 
-This is the **rational method**. Its basic idea, that the peak is reached when the whole catchment contributes, goes back to Thomas Mulvaney in Ireland in 1851, and the formula became standard practice for city drainage through the work of Emil Kuichling in the United States (1889) and David Lloyd-Davies in Britain (1906) (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#floods-from-formulas-to-the-unit-hydrograph)). It remains the most widely used method for the design of storm sewers, culverts and small drainage structures.
+This is the **rational method**. Its basic idea, that the peak is reached when the whole catchment contributes, goes back to Thomas Mulvaney in Ireland in 1851, and the formula became standard practice for city drainage through the work of Emil Kuichling in the United States (1889) and David Lloyd-Davies in Britain (1906) (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#floods-from-formulas-to-the-unit-hydrograph)). It remains the most widely used method for the design of storm sewers, culverts and small drainage structures.
 
 ### Why the design duration equals $t_c$
 
@@ -186,7 +186,7 @@ where $n$ is a Manning roughness for sheet flow (0.011 for smooth pavement, 0.15
 
 - **Shallow concentrated flow** in rills and gutters, with velocity $V = 4.918\,S_0^{0.5}$ m s⁻¹ on unpaved and $V = 6.196\,S_0^{0.5}$ m s⁻¹ on paved surfaces (converted from 16.13 and 20.33 ft s⁻¹).
 
-- **Channel or pipe flow**, with the velocity from the [Manning equation](https://daehakim-waterlab.github.io/hydraulics/chapters/ch06_flow_in_open_channels.html#uniform-flow-the-chezy-and-manning-equations) at bankfull or full-pipe conditions, $V = R^{2/3}S_0^{1/2}/n$.
+- **Channel or pipe flow**, with the velocity from the [Manning equation](https://hydroclimatol.com/hydraulics/chapters/ch06_flow_in_open_channels.html#uniform-flow-the-chezy-and-manning-equations) at bankfull or full-pipe conditions, $V = R^{2/3}S_0^{1/2}/n$.
 
 ```{code-cell} python
 c_sheet = 0.007 * (1 / ft) ** 0.8 * (25.4) ** 0.5            # converts 0.007 (ft, in) to SI (m, mm)

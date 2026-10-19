@@ -97,7 +97,7 @@ $$
 Q = \sum_j v_j\, d_j\, w_j ,
 $$
 
-where $v_j$ is the mean velocity, $d_j$ the depth and $w_j$ the width of strip $j$. In each vertical, the mean velocity is approximately the point velocity at 0.6 of the depth below the surface, or the average of the velocities at 0.2 and 0.8 of the depth, a consequence of the roughly logarithmic velocity profile (Chapter 4 of the [Hydraulics](https://daehakim-waterlab.github.io/hydraulics/) book). Acoustic Doppler current profilers mounted on a boat now measure the whole section in one crossing. In small streams, a weir or flume with a known stage–discharge relation can be built instead (Chapter 6 of the Hydraulics book).
+where $v_j$ is the mean velocity, $d_j$ the depth and $w_j$ the width of strip $j$. In each vertical, the mean velocity is approximately the point velocity at 0.6 of the depth below the surface, or the average of the velocities at 0.2 and 0.8 of the depth, a consequence of the roughly logarithmic velocity profile (Chapter 4 of the [Hydraulics](https://hydroclimatol.com/hydraulics/) book). Acoustic Doppler current profilers mounted on a boat now measure the whole section in one crossing. In small streams, a weir or flume with a known stage–discharge relation can be built instead (Chapter 6 of the Hydraulics book).
 
 ### The rating curve
 
@@ -108,7 +108,7 @@ Q = a\,(h - h_0)^b ,
 \tag{6.1}
 \end{equation*}
 
-where $h_0$ is the stage of zero flow, and $a$ and $b$ are fitted constants. The exponent reflects the hydraulics of the control: about 1.5 for a section that behaves like a broad weir, about 5/3 for a wide channel in uniform flow (from the [Manning equation](https://daehakim-waterlab.github.io/hydraulics/chapters/ch06_flow_in_open_channels.html#uniform-flow-the-chezy-and-manning-equations)), and larger for V-shaped or trapezoidal sections. Taking logarithms, $\ln Q = \ln a + b \ln(h - h_0)$, which is a straight line, so $a$ and $b$ can be found by linear regression once $h_0$ is chosen. The value of $h_0$ can be surveyed at the control or chosen to make the plot straightest.
+where $h_0$ is the stage of zero flow, and $a$ and $b$ are fitted constants. The exponent reflects the hydraulics of the control: about 1.5 for a section that behaves like a broad weir, about 5/3 for a wide channel in uniform flow (from the [Manning equation](https://hydroclimatol.com/hydraulics/chapters/ch06_flow_in_open_channels.html#uniform-flow-the-chezy-and-manning-equations)), and larger for V-shaped or trapezoidal sections. Taking logarithms, $\ln Q = \ln a + b \ln(h - h_0)$, which is a straight line, so $a$ and $b$ can be found by linear regression once $h_0$ is chosen. The value of $h_0$ can be surveyed at the control or chosen to make the plot straightest.
 
 Rating curves are the weakest link in most streamflow records. Floods are rarely gauged, so the curve is often **extrapolated** far beyond the highest measurement. Flow spreads onto the floodplain at high stage, changing the hydraulics. Channel beds scour and fill, which **shifts** the curve. And on flat rivers the same stage carries more water on the rising limb than on the falling limb (**hysteresis**), because the water-surface slope is steeper as the flood wave arrives. Example 6.2 shows how extrapolation can go wrong.
 

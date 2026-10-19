@@ -66,7 +66,7 @@ $$
 h = \psi + z ,
 $$
 
-where $z$ is the elevation above a datum and $\psi$ is the **pressure head**. Below the water table, $\psi > 0$ and equals the depth below the water table, as in hydrostatics. Above it, water is held in the pores by surface tension, the same force that lifts water in a capillary tube (Chapter 1 of the [Hydraulics](https://daehakim-waterlab.github.io/hydraulics/) book). Its pressure is below atmospheric, so $\psi < 0$. The negative pressure head is called the **matric potential** (or **suction**, $|\psi|$). It is expressed as a head in meters or centimeters of water, or as a pressure in kPa (1 m of head ≈ 9.81 kPa).
+where $z$ is the elevation above a datum and $\psi$ is the **pressure head**. Below the water table, $\psi > 0$ and equals the depth below the water table, as in hydrostatics. Above it, water is held in the pores by surface tension, the same force that lifts water in a capillary tube (Chapter 1 of the [Hydraulics](https://hydroclimatol.com/hydraulics/) book). Its pressure is below atmospheric, so $\psi < 0$. The negative pressure head is called the **matric potential** (or **suction**, $|\psi|$). It is expressed as a head in meters or centimeters of water, or as a pressure in kPa (1 m of head ≈ 9.81 kPa).
 
 ### The water retention curve
 
@@ -126,7 +126,7 @@ for name, (fc, wp) in avail.items():
 
 ### Saturated flow
 
-In 1856 Henry Darcy measured the flow of water through columns of sand for the fountains of Dijon and found that the discharge per unit area was proportional to the drop in head per unit length (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#groundwater-from-darcy-to-theis)). In one dimension:
+In 1856 Henry Darcy measured the flow of water through columns of sand for the fountains of Dijon and found that the discharge per unit area was proportional to the drop in head per unit length (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#groundwater-from-darcy-to-theis)). In one dimension:
 
 \begin{equation*}
 q = -K_s \frac{dh}{dx},
@@ -135,7 +135,7 @@ q = -K_s \frac{dh}{dx},
 
 where $q$ is the **Darcy flux** (volume per unit total area per unit time, with units of velocity), $K_s$ the **saturated hydraulic conductivity** and $dh/dx$ the **hydraulic gradient**. The minus sign means water flows down the gradient. The Darcy flux is not the speed of the water: water moves only through the pores, so the average **pore velocity** is $q/n_e$, where $n_e$ is the effective porosity. Saturated conductivity ranges over many orders of magnitude: roughly 10–1000 mm h⁻¹ for sands, 1–50 mm h⁻¹ for loams and less than 1 mm h⁻¹ for clays, before the effect of macropores is considered.
 
-Darcy's law is the porous-medium version of laminar pipe flow: at the low velocities and tiny pore sizes in soils and most aquifers, the Reynolds number is small and the head loss is proportional to velocity (Chapter 4 of the [Hydraulics](https://daehakim-waterlab.github.io/hydraulics/) book).
+Darcy's law is the porous-medium version of laminar pipe flow: at the low velocities and tiny pore sizes in soils and most aquifers, the Reynolds number is small and the head loss is proportional to velocity (Chapter 4 of the [Hydraulics](https://hydroclimatol.com/hydraulics/) book).
 
 ### Unsaturated flow
 
@@ -150,7 +150,7 @@ with $z$ taken positive upward. When a soil dries, its water occupies only the s
 
 ### The Richards equation
 
-Conservation of mass for a thin horizontal slice of soil says that the water content increases at the rate at which more water flows in from above than leaves below: $\partial\theta/\partial t = -\partial q / \partial z$. Substituting Equation (5.3) gives the **Richards equation** (Richards, 1931; see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)) for vertical flow:
+Conservation of mass for a thin horizontal slice of soil says that the water content increases at the rate at which more water flows in from above than leaves below: $\partial\theta/\partial t = -\partial q / \partial z$. Substituting Equation (5.3) gives the **Richards equation** (Richards, 1931; see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)) for vertical flow:
 
 \begin{equation*}
 \frac{\partial \theta}{\partial t} = \frac{\partial}{\partial z}\left[K(\psi)\left(\frac{\partial \psi}{\partial z} + 1\right)\right].
@@ -172,7 +172,7 @@ At the start of a storm a dry soil absorbs water quickly: the suction gradient a
 
 ### Horton's equation
 
-Robert Horton (1933, 1940) proposed an empirical exponential decay (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)):
+Robert Horton (1933, 1940) proposed an empirical exponential decay (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)):
 
 \begin{equation*}
 f_p(t) = f_c + (f_0 - f_c)\,e^{-k_H t},
@@ -198,7 +198,7 @@ where $S_p$ is the **sorptivity** (mm h⁻¹ᐟ²), which measures the capillary
 
 ### The Green–Ampt model
 
-W. H. Green and G. A. Ampt (1911) (see [*A Brief History*](https://daehakim-waterlab.github.io/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)) idealized infiltration as a sharp **wetting front** moving down into the soil: behind the front the soil is saturated, ahead of it the soil keeps its initial water content $\theta_i$ (Figure 5.2). This "piston" picture is a fair description of infiltration into dry, coarse soils and gives an equation whose parameters are physical.
+W. H. Green and G. A. Ampt (1911) (see [*A Brief History*](https://hydroclimatol.com/water-history/history-of-hydrology/#horton-and-the-physics-of-runoff)) idealized infiltration as a sharp **wetting front** moving down into the soil: behind the front the soil is saturated, ahead of it the soil keeps its initial water content $\theta_i$ (Figure 5.2). This "piston" picture is a fair description of infiltration into dry, coarse soils and gives an equation whose parameters are physical.
 
 ```{code-cell} python
 :tags: [hide-input]

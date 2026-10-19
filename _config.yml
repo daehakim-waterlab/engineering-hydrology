@@ -28,7 +28,7 @@ repository:
   branch: main
 
 html:
-  baseurl: https://daehakim-waterlab.github.io/engineering-hydrology/
+  baseurl: https://hydroclimatol.com/engineering-hydrology/
   use_repository_button: true
   use_issues_button: false
   use_edit_page_button: false
@@ -67,6 +67,6 @@ sphinx:
       footer_content_items: [extra-footer.html, last-updated.html]
       icon_links:
         - name: Download the book as PDF
-          url: https://daehakim-waterlab.github.io/engineering-hydrology/engineering-hydrology.pdf
+          url: https://hydroclimatol.com/engineering-hydrology/engineering-hydrology.pdf
           icon: fa-solid fa-file-pdf
           type: fontawesome
