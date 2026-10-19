@@ -69,7 +69,7 @@ The same symbol means the same thing throughout the book. The most common ones a
   - Air temperature
   - °C
 * - $e,\ e_s$
-  - Vapour pressure and saturation vapour pressure
+  - Vapor pressure and saturation vapor pressure
   - kPa
 * - $t_c$
   - Time of concentration
@@ -82,6 +82,6 @@ The same symbol means the same thing throughout the book. The most common ones a
   - years
 ```
 
-## Licence
+## License
 
 This book is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). You may share and adapt it for non-commercial purposes with appropriate credit.

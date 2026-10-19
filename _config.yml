@@ -33,7 +33,7 @@ html:
   use_issues_button: false
   use_edit_page_button: false
   home_page_in_navbar: true
-  # Footer: "© Daeha Kim" and the licence (replaces the default "By ... © Copyright ..." lines).
+  # Footer: "© Daeha Kim" and the license (replaces the default "By ... © Copyright ..." lines).
   extra_footer: |
     <p>
       © Daeha Kim. Licensed under
