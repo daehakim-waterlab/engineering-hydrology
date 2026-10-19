@@ -66,6 +66,9 @@ sphinx:
         \makeatother
     html_theme_options:
       footer_content_items: [extra-footer.html, last-updated.html]
+      # No top bar with a second search box: newer pydata-sphinx-theme adds one unless this is set.
+      # The sidebar already has search.
+      navbar_persistent: []
       # "Lab homepage" link in the header, next to the buttons (as in the water-history book).
       article_header_end: [lab-home.html, article-header-buttons.html]
       icon_links:
