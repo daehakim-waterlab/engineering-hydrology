@@ -139,7 +139,7 @@ ax.set_xlabel("Hour of day"); ax.set_ylabel("Energy flux (W m⁻²)")
 ax.legend(loc="upper left", fontsize=9.5)
 plt.show()
 
-MJ = lambda f: np.trapz(f, t * 3600) / 1e6                         # daily total, MJ m⁻²
+MJ = lambda f: np.trapezoid(f, t * 3600) / 1e6                         # daily total, MJ m⁻²
 glue("d_Rn", float(MJ(Rn)), display=False); glue("d_LE", float(MJ(LE)), display=False)
 glue("d_G", float(MJ(G)), display=False); glue("d_E", float(MJ(LE) / 2.45), display=False)
 ```

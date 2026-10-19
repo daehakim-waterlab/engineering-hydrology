@@ -144,7 +144,7 @@ On a topographic map, the divide follows ridges and crosses contours at right an
 Lc = 9.0                                            # length of the catchment, km
 W = lambda y: 2.3 * np.sin(np.pi * np.clip(y, 0, Lc) / Lc) ** 0.7   # half-width, km
 yy = np.linspace(0, Lc, 400)
-A_syn = np.trapz(2 * W(yy), yy)                    # catchment area, km²
+A_syn = np.trapezoid(2 * W(yy), yy)                    # catchment area, km²
 glue("A_syn", float(A_syn), display=False)
 
 x = np.linspace(-2.5, 2.5, 300); y = np.linspace(0, Lc, 400)
