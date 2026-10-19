@@ -135,7 +135,7 @@ t_c = 1.44\left(\frac{L\, N}{S_0^{0.5}}\right)^{0.467} \qquad (t_c \text{ in min
 \tag{8.3}
 \end{equation*}
 
-where $N$ is a retardance coefficient (about 0.02 for smooth pavement, 0.1–0.3 for bare or sparsely grassed soil, 0.4 for average grass and 0.8 for dense grass or forest litter). The original constant is 0.83 with $L$ in feet.
+where $N$ is a retardance coefficient (about 0.02 for pavement, 0.1 for smooth bare packed soil, 0.2 for poor grass or cultivated row crops, 0.4 for pasture or average grass, 0.6 for deciduous forest and 0.8 for dense grass, coniferous forest or forest with deep litter). The original constant is 0.83 with $L$ in feet.
 
 **NRCS lag equation**, developed for agricultural catchments and widely applied to rural areas:
 
@@ -344,9 +344,9 @@ glue("z5_Qf", 1 / 0.013 * np.pi * D5c ** 2 / 4 * (D5c / 4) ** (2 / 3) * 0.005 **
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The section on the rational method and times of concentration.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapter on hydrologic design, including storm sewer design.
-- 윤용남. *수문학* (in Korean). The chapter on design floods for small catchments.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapter on design floods for small catchments.
 - Kirpich, Z. P. (1940). Time of concentration of small agricultural watersheds. *Civil Engineering*, 10(6), 362.
-- Kerby, W. S. (1959). Time of concentration for overland flow. *Civil Engineering*, 29(3), 60.
+- Kerby, W. S. (1959). Time of concentration for overland flow. *Civil Engineering*, 29(3), 174.
 - USDA Natural Resources Conservation Service. *National Engineering Handbook*, Part 630 Hydrology, Chapter 15 (Time of concentration).
 
 ---

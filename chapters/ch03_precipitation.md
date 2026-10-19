@@ -447,7 +447,7 @@ glue("e5_days", 1.2 * 350 / (3.0 * 6.0), display=False)
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The chapters on precipitation and on snow.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapter on atmospheric water and precipitation.
-- 윤용남. *수문학* (in Korean). The chapter on precipitation.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapter on precipitation.
 - Marshall, J. S., and Palmer, W. McK. (1948). The distribution of raindrops with size. *Journal of Meteorology*, 5, 165–166.
 - Thiessen, A. H. (1911). Precipitation averages for large areas. *Monthly Weather Review*, 39, 1082–1084.
 

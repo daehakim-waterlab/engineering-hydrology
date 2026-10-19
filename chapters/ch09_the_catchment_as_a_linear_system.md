@@ -586,7 +586,7 @@ glue("w5_tp", 0.75 * 1.6 * (35 * 16) ** 0.3, display=False); glue("w5_Qp", 0.275
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The section on unit hydrographs and event-response models.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapters on unit hydrographs and synthetic unit hydrographs.
-- 윤용남. *수문학* (in Korean). The chapter on the unit hydrograph.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapter on the unit hydrograph.
 - Sherman, L. K. (1932). Streamflow from rainfall by the unit-graph method. *Engineering News-Record*, 108, 501–505.
 - Snyder, F. F. (1938). Synthetic unit-graphs. *Transactions, American Geophysical Union*, 19, 447–454.
 - Clark, C. O. (1945). Storage and the unit hydrograph. *Transactions of the American Society of Civil Engineers*, 110, 1419–1446.

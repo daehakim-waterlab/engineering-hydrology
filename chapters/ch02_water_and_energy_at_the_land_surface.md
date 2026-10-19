@@ -494,7 +494,7 @@ glue("x5_z", 125 * (26 - 18.0), display=False); glue("x5_T", 26 - 9.8 * 125 * 8 
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The chapters on climate, the atmosphere and the surface energy balance.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapter on atmospheric water.
-- 윤용남. *수문학* (in Korean). The chapter on hydrometeorology.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapter on hydrometeorology.
 - Allen, R. G., Pereira, L. S., Raes, D., and Smith, M. (1998). *Crop Evapotranspiration: Guidelines for Computing Crop Water Requirements*. FAO Irrigation and Drainage Paper 56. FAO, Rome. Chapter 3 gives the formulas for radiation, humidity and pressure used here.
 - Monteith, J. L., and Unsworth, M. H. (2013). *Principles of Environmental Physics* (4th ed.). Academic Press.
 

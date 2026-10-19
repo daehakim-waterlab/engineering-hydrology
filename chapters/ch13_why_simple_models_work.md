@@ -431,10 +431,10 @@ glue("f5_L", float(c_si * 600 ** 0.6), display=False)
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The material on catchment-scale hydrological modeling.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The introduction to hydrologic systems.
-- 윤용남. *수문학* (in Korean).
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각.
 - Beven, K. (2006). A manifesto for the equifinality thesis. *Journal of Hydrology*, 320, 18–36.
 - Brutsaert, W., and Nieber, J. L. (1977). Regionalized drought flow hydrographs from a mature glaciated plateau. *Water Resources Research*, 13, 637–643.
-- Hack, J. T. (1957). Studies of longitudinal stream profiles in Virginia and Maryland. *US Geological Survey Professional Paper* 294-B.
+- Hack, J. T. (1957). Studies of longitudinal stream profiles in Virginia and Maryland. *US Geological Survey Professional Paper* 294-B, 45–97.
 - Kim, D., Chun, J. A., and Aikins, C. M. (2018). An hourly-scale scenario-neutral flood risk assessment in a mesoscale catchment under climate change. *Hydrological Processes*, 32, 3416–3430. [https://doi.org/10.1002/hyp.13273](https://doi.org/10.1002/hyp.13273)
 - Kirchner, J. W. (2009). Catchments as simple dynamical systems: catchment characterization, rainfall-runoff modeling, and doing hydrology backward. *Water Resources Research*, 45, W02429. [https://doi.org/10.1029/2008WR006912](https://doi.org/10.1029/2008WR006912)
 - Lenderink, G., and van Meijgaard, E. (2008). Increase in hourly precipitation extremes beyond expectations from temperature changes. *Nature Geoscience*, 1, 511–514.

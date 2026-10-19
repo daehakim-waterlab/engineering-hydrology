@@ -513,9 +513,9 @@ glue("p5_q", 0.3 / 365 * 400 * 1000, display=False)
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The chapters on soil water, infiltration and groundwater.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapter on subsurface water.
-- 윤용남. *수문학* (in Korean). The chapters on infiltration and groundwater.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapters on infiltration and groundwater.
 - Green, W. H., and Ampt, G. A. (1911). Studies on soil physics, 1. The flow of air and water through soils. *Journal of Agricultural Science*, 4, 1–24.
-- Philip, J. R. (1957). The theory of infiltration: 1. The infiltration equation and its solution. *Soil Science*, 83, 345–357.
+- Philip, J. R. (1957). The theory of infiltration: 1. The infiltration equation and its solution. *Soil Science*, 83, 345–358.
 - Rawls, W. J., Brakensiek, D. L., and Miller, N. (1983). Green–Ampt infiltration parameters from soils data. *Journal of Hydraulic Engineering*, 109, 62–70.
 - van Genuchten, M. Th. (1980). A closed-form equation for predicting the hydraulic conductivity of unsaturated soils. *Soil Science Society of America Journal*, 44, 892–898.
 

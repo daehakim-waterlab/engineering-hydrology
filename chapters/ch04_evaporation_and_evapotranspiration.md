@@ -570,9 +570,9 @@ glue("q5_EP", (1180 - Q5) / 1180, display=False); glue("q5_fu", float(fu(780 / 1
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The chapter on evapotranspiration.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The sections on evaporation and evapotranspiration.
-- 윤용남. *수문학* (in Korean). The chapter on evaporation and transpiration.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapter on evaporation and transpiration.
 - Allen, R. G., Pereira, L. S., Raes, D., and Smith, M. (1998). *Crop Evapotranspiration: Guidelines for Computing Crop Water Requirements*. FAO Irrigation and Drainage Paper 56. FAO, Rome.
-- Shuttleworth, W. J. (1993). Evaporation. In D. R. Maidment (Ed.), *Handbook of Hydrology*. McGraw-Hill.
+- Shuttleworth, W. J. (1993). Evaporation. In D. R. Maidment (Ed.), *Handbook of Hydrology* (pp. 4.1–4.53). McGraw-Hill.
 - Penman, H. L. (1948). Natural evaporation from open water, bare soil and grass. *Proceedings of the Royal Society of London A*, 193, 120–145.
 - Monteith, J. L. (1965). Evaporation and environment. *Symposia of the Society for Experimental Biology*, 19, 205–234.
 - Priestley, C. H. B., and Taylor, R. J. (1972). On the assessment of surface heat flux and evaporation using large-scale parameters. *Monthly Weather Review*, 100, 81–92.

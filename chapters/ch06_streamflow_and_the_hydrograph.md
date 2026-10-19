@@ -421,9 +421,9 @@ glue("x5_t", float(np.log(1.0 / 2.0) / np.log(Kr5)), display=False)
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The chapters on streamflow generation and on streamflow measurement.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapters on surface water and streamflow measurement.
-- 윤용남. *수문학* (in Korean). The chapters on streamflow and hydrograph analysis.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapters on streamflow and hydrograph analysis.
 - Eckhardt, K. (2005). How to construct recursive digital filters for baseflow separation. *Hydrological Processes*, 19, 507–515.
-- Lyne, V., and Hollick, M. (1979). Stochastic time-variable rainfall-runoff modelling. *Institution of Engineers Australia National Conference*, Perth, 89–93.
+- Lyne, V., and Hollick, M. (1979). Stochastic time-variable rainfall-runoff modelling. *Hydrology and Water Resources Symposium*, Perth, Institution of Engineers Australia, National Conference Publication 79/10, 89–92.
 - Nathan, R. J., and McMahon, T. A. (1990). Evaluation of automated techniques for base flow and recession analyses. *Water Resources Research*, 26, 1465–1473.
 
 ---

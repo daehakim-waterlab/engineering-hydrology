@@ -431,9 +431,9 @@ glue("y5_cn", float(brentq(lambda c: cn_runoff(150.0, c) - 60.0, 40, 99.9)), dis
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The sections on rainfall–runoff relations and event-response models.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapter on surface water, including abstractions and the SCS method.
-- 윤용남. *수문학* (in Korean). The chapter on effective rainfall and losses.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapter on effective rainfall and losses.
 - USDA Natural Resources Conservation Service. *National Engineering Handbook*, Part 630 Hydrology, Chapters 9 (Hydrologic soil-cover complexes) and 10 (Estimation of direct runoff from storm rainfall).
-- Woodward, D. E., Hawkins, R. H., Jiang, R., Hjelmfelt, A. T., Van Mullem, J. A., and Quan, Q. D. (2003). Runoff curve number method: examination of the initial abstraction ratio. *World Water & Environmental Resources Congress 2003*, ASCE.
+- Woodward, D. E., Hawkins, R. H., Jiang, R., Hjelmfelt, A. T., Jr., Van Mullem, J. A., and Quan, Q. D. (2003). Runoff curve number method: examination of the initial abstraction ratio. *World Water & Environmental Resources Congress 2003*, Philadelphia, ASCE, 1–10.
 
 ---
 

@@ -441,7 +441,7 @@ glue("e5_q", float(design_flood(T=200, D_h=d_crit)["Q_town"].max()), display=Fal
 
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapters on hydrologic design and design flows.
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The sections on hydrologic modeling and uncertainty.
-- 윤용남. *수문학* (in Korean). The chapter on the estimation of design floods.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapter on the estimation of design floods.
 - US Army Corps of Engineers, Hydrologic Engineering Center. *HEC-HMS Technical Reference Manual*. Davis, California.
 
 ---

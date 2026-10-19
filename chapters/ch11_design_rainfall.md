@@ -269,7 +269,7 @@ Other design hyetographs include the NRCS 24-hour distributions, the triangular 
 
 ## 11.6 Probable maximum precipitation and flood
 
-For a large dam whose failure could cause loss of life on a large scale, no return period is long enough. Design is instead based on the physical upper limit of rainfall. The **probable maximum precipitation** (PMP) is the theoretically greatest depth of precipitation for a given duration that is physically possible over a given area at a given location at a certain time of year (WMO, 2009). The **probable maximum flood** (PMF) is the flood that results from the PMP falling on the catchment under the most severe reasonably possible conditions: wet soils, high baseflow and, where relevant, snowmelt.
+For a large dam whose failure could cause loss of life on a large scale, no return period is long enough. Design is instead based on the physical upper limit of rainfall. The **probable maximum precipitation** (PMP) is the greatest depth of precipitation for a given duration that is meteorologically possible over a design catchment or storm area at a particular location and time of year, with no allowance for long-term climatic trends (WMO, 2009). The **probable maximum flood** (PMF) is the flood that results from the PMP falling on the catchment under the most severe reasonably possible conditions: wet soils, high baseflow and, where relevant, snowmelt.
 
 **Storm maximization.** The main hydrometeorological method takes the largest observed storms in a region and asks how much more rain they would have produced if the atmosphere had contained the maximum possible moisture. The **precipitable water** $W$, the depth of water obtained by condensing all vapor in a column of air,
 
@@ -450,7 +450,7 @@ glue("u5", (1 - 1 / 50) ** 10, display=False)
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The material on hydrologic design and probability.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapters on hydrologic design and design storms.
-- 윤용남. *수문학* (in Korean). The chapters on design rainfall and probable maximum precipitation.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapters on design rainfall and probable maximum precipitation.
 - Hershfield, D. M. (1961). Estimating the probable maximum precipitation. *Journal of the Hydraulics Division, ASCE*, 87(HY5), 99–116.
 - Huff, F. A. (1967). Time distribution of rainfall in heavy storms. *Water Resources Research*, 3, 1007–1019.
 - Leclerc, G., and Schaake, J. C. (1972). *Derivation of hydrologic frequency curves*. Report 142, Ralph M. Parsons Laboratory, Massachusetts Institute of Technology.

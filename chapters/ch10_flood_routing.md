@@ -469,9 +469,9 @@ glue("v4_O", 2.0 * 30 * 1.2 ** 1.5, display=False)
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The sections on streamflow routing.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The chapters on lumped flow routing and distributed flow routing.
-- 윤용남. *수문학* (in Korean). The chapter on flood routing.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The chapter on flood routing.
 - Cunge, J. A. (1969). On the subject of a flood propagation computation method (Muskingum method). *Journal of Hydraulic Research*, 7, 205–230.
-- McCarthy, G. T. (1938). *The unit hydrograph and flood routing*. Conference of the North Atlantic Division, US Army Corps of Engineers.
+- McCarthy, G. T. (1938). *The unit hydrograph and flood routing*. Unpublished manuscript presented at a conference of the North Atlantic Division, US Army Corps of Engineers, June 24, 1938.
 
 ---
 

@@ -483,9 +483,9 @@ glue("ex5_Tr", (12_900 / 510e6 * 1e6) / (500e3 / 510e6 * 1e6) * 365, display=Fal
 
 - Dingman, S. L. (2015). *Physical Hydrology* (3rd ed.). Waveland Press. The opening chapters on the water cycle, catchments and the water balance.
 - Chow, V. T., Maidment, D. R., and Mays, L. W. (1988). *Applied Hydrology*. McGraw-Hill. The introductory chapter on the hydrologic cycle and hydrologic systems.
-- 윤용남. *수문학* (in Korean). The introductory chapter on the hydrological cycle.
+- 윤용남 (2007). *수문학: 기초와 응용* (in Korean). 청문각. The introductory chapter on the hydrological cycle.
 - Oki, T., and Kanae, S. (2006). Global hydrological cycles and world water resources. *Science*, 313, 1068–1072.
-- Shiklomanov, I. A. (1993). World fresh water resources. In P. H. Gleick (Ed.), *Water in Crisis: A Guide to the World's Fresh Water Resources*. Oxford University Press.
+- Shiklomanov, I. A. (1993). World fresh water resources. In P. H. Gleick (Ed.), *Water in Crisis: A Guide to the World's Fresh Water Resources*. Oxford University Press, New York.
 
 ---
 
