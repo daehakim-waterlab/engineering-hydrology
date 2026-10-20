@@ -52,7 +52,7 @@ Civil engineers meet hydrology whenever a structure must deal with water that it
 - **When?** The time at which a flood peaks, how fast it rises and falls, the season of low flows.
 - **How often?** The probability that a given flood or drought will be equaled or exceeded in any year.
 
-The third question needs probability and statistics. This book uses the results of frequency analysis (Chapter 11) but does not teach how to fit frequency distributions; that is covered in a separate textbook on statistical hydrology.
+The third question needs probability and statistics. This book uses the results of frequency analysis (Chapter 11) but does not teach how to fit frequency distributions; that is covered in the companion book [Statistical Hydrology](https://hydroclimatol.com/statistical-hydrology/).
 
 Hydrology is younger than hydraulics as a quantitative science. The first measured water balance of a river basin, Pierre Perrault's study of the upper Seine published in 1674, showed that rainfall was more than enough to supply the river (see [*A Brief History of Fluid Mechanics and Water Sciences*](https://hydroclimatol.com/water-history/history-of-hydrology/#the-birth-of-quantitative-hydrology-perrault-mariotte-and-halley)). Most of the methods in this book were developed in the 19th and 20th centuries by engineers who needed answers before the science was complete. As a result, engineering hydrology mixes physics (conservation of mass and energy, Darcy's law) with empirical formulas whose coefficients come from data. Knowing which is which is an important skill.
 

@@ -61,7 +61,7 @@ T = \frac{1}{p} .
 
 The **non-exceedance probability** is $F = 1 - p = 1 - 1/T$. A "100-year rainfall" is a depth that has a 1% chance of being equaled or exceeded in any year.
 
-The return period is an **average**: over a very long period, the years in which $x_T$ is exceeded are on average $T$ years apart. It does not mean the event happens once every $T$ years, and two 100-year floods can occur in successive years. Estimating $x_T$ for a given $T$ requires fitting a probability distribution to the annual maxima (Gumbel, generalized extreme value, log-Pearson type III, and others). **Frequency analysis is covered in a separate textbook on statistical hydrology**; this chapter starts from its results.
+The return period is an **average**: over a very long period, the years in which $x_T$ is exceeded are on average $T$ years apart. It does not mean the event happens once every $T$ years, and two 100-year floods can occur in successive years. Estimating $x_T$ for a given $T$ requires fitting a probability distribution to the annual maxima (Gumbel, generalized extreme value, log-Pearson type III, and others). **Frequency analysis is covered in the companion book [Statistical Hydrology](https://hydroclimatol.com/statistical-hydrology/chapters/ch08_frequency_analysis.html)**; this chapter starts from its results.
 
 ## 11.2 Risk over the design life
 

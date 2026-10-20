@@ -11,7 +11,7 @@ The whole book is also available as a [PDF](https://hydroclimatol.com/engineerin
 Companion sites:
 [Hydraulics](https://hydroclimatol.com/hydraulics/) (open channels, the Manning equation) and
 [A Brief History of Fluid Mechanics and Water Sciences](https://hydroclimatol.com/water-history/) (the people behind the methods).
-Frequency analysis of hydrological extremes is covered in a separate textbook on statistical hydrology.
+Frequency analysis of hydrological extremes is covered in the companion textbook [Statistical Hydrology](https://hydroclimatol.com/statistical-hydrology/).
 
 ## Contents
 

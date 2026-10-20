@@ -357,7 +357,7 @@ glue("mc_ratio", float(p95 / p5), display=False)
 
 The baseline lies near the upper end of the range because it combines wet antecedent conditions with the NRCS unit hydrograph, which has the sharpest peak of the three. The histogram has several humps because two of the inputs are discrete choices.
 
-A range this wide is normal. It does not mean the design is arbitrary: it means the design value is a decision, made with knowledge of the uncertainty. Common responses are to calibrate the most influential parameters against observed floods in the catchment or in similar gauged catchments, to compare the result with a regional flood frequency estimate (from statistical hydrology), to use the upper part of the range where the consequences of failure are severe, and to add freeboard. Whatever is chosen, the report should state the method, every parameter and the range of plausible values.
+A range this wide is normal. It does not mean the design is arbitrary: it means the design value is a decision, made with knowledge of the uncertainty. Common responses are to calibrate the most influential parameters against observed floods in the catchment or in similar gauged catchments, to compare the result with a regional flood frequency estimate (see [Statistical Hydrology](https://hydroclimatol.com/statistical-hydrology/chapters/ch08_frequency_analysis.html#regional-frequency-analysis)), to use the upper part of the range where the consequences of failure are severe, and to add freeboard. Whatever is chosen, the report should state the method, every parameter and the range of plausible values.
 
 ## 12.7 Worked examples
 
